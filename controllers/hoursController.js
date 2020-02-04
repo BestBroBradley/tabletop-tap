@@ -2,14 +2,14 @@ const db = require("../models")
 
 module.exports = {
     findAll: function (req, res) {
-        db.Games.findAll().then((data) => {
+        db.Hours.findAll().then((data) => {
             res.json(data)
         }).catch((err) => {
             res.status(500).end()
         })
     },
     create: function (req, res) {
-        db.Games.create(req.body).then(data => {
+        db.Hours.create(req.body).then(data => {
             res.json(data)
         }).catch((err) => {
             res.status(500).end()
@@ -17,7 +17,7 @@ module.exports = {
     },
 
     update: function (req, res) {
-        db.Games.update(req.body, {
+        db.Hours.update(req.body, {
             where: {
                 id: req.body.id
             }
@@ -29,7 +29,7 @@ module.exports = {
     },
 
     remove: function (req, res) {
-        db.Games.destroy({where: {
+        db.Hours.destroy({where: {
             id: req.params.id
         }}).then(data => {
             res.json(data)
