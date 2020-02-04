@@ -1,0 +1,24 @@
+{
+  "name": "tabletop-tap",
+  "version": "1.0.0",
+  "description": "Business website for Tabletop Tap in Englewood, CO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BestBroBradley/project-two.git"
+  },
+  "author": "Allison Bradley, Juan Castellanos Nevarro, Dan Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BestBroBradley/project-two/issues"
+  },
+  "homepage": "https://github.com/BestBroBradley/project-two#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3"
+  }
+}
