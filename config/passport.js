@@ -9,11 +9,17 @@ passport.use(new LocalStrategy(
         console.log(username+password)
         db.Users.findOne({
             where: { login: username }
-        }).then(function (err, user) {
-            if (err) { return done(err); } //throws error to frontend
+        }).then(function (user,err) {
+            if (err) { 
+                console.log("inside the error")
+                console.log(user)
+                return done(err); 
+            }
+            
+            // console.log("below err if")//throws error to frontend
             if (!user) { 
                 return done(null, false); } // if there is no user sends false to front end
-            if (!user.verifyPassword(password)) { 
+            if (!user.validPassword(password)) { 
                 return done(null, false); }
                 //if there is a user but the password doesn't match sends false,
             return done(null, user); //if it didn't get stuck in anything sends the authenticated user to the front end.

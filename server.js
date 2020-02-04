@@ -29,6 +29,12 @@ db.sequelize.sync({ force: true }).then(function() {
     email:"test@gmail.com",
     tier:"ADMIN"
   })
+  
+  // .then(()=>{
+  //   db.Users.findOne({
+  //     where: { login: "test" }
+  // }).then(data=>{console.log(data)})
+  // })
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
