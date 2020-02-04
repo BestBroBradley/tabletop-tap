@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Page</title>
+    <style>
+        * {
+            font-family: sans-serif
+        }
+
+        .container {
+            border: 2px solid black;
+            padding: 10px 20px 20px;
+            flex: 1;
+            margin: 10px 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .beerwrap {
+            display: flex;
+            margin: -10px 0
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Admin Page</h1>
+    <div class="container">
+        <form id="add-game">
+            <h2>Add a game:</h2>
+            <input>
+            <button>Submit</button>
+        </form>
+    </div>
+    <div class="container">
+        <form id="del-game">
+            <h2>Delete a game:</h2>
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <button>DELETE</button>
+        </form>
+    </div>
+    <div class="beerwrap">
+        <div class="container">
+            <form id="add-beer">
+                <h2>Add a beer:</h2>
+                <h3>Beer name:</h3>
+                <input>
+                <h3>Brewery:</h3>
+                <input>
+                <h3>Brewery location:</h3>
+                <input>
+                <h3>ABV</h3>
+                <input>
+                <h3>Price</h3>
+                <input>
+                <h3>Short description of beer:</h3>
+                <textarea></textarea>
+                <h3>Longer description of beer (optional):</h3>
+                <textarea></textarea>
+                <button>Submit</button>
+            </form>
+        </div>
+        <div class="container">
+            <form id="update-beer">
+                <h2>Update a beer:</h2>
+                <h3>Beer name:</h3>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+                <h3>Brewery:</h3>
+                <input>
+                <h3>Brewery location:</h3>
+                <input>
+                <h3>ABV</h3>
+                <input>
+                <h3>Price</h3>
+                <input>
+                <h3>Short description of beer:</h3>
+                <textarea></textarea>
+                <h3>Longer description of beer (optional):</h3>
+                <textarea></textarea>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <form id="del-beer">
+            <h2>Delete a beer:</h2>
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <button>DELETE</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Update Hours:</h2>
+        <hr>
+        <div class="day">
+            <form id="update-hours">
+                <h3 id="monday">Monday: Open-Close</h3>
+                <select name="mon-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="mon-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <h3 id="tuesday">Tuesday: Open-Close</h3>
+                <select name="tues-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="tues-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <h3 id="wednesday">Wednesday: Open-Close</h3>
+                <select name="weds-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="weds-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <h3 id="thursday">Thursday: Open-Close</h3>
+                <select name="thurs-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="thurs-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <h3 id="friday">Friday: Open-Close</h3>
+                <select name="fri-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="fri-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <h3 id="saturday">Saturday: Open-Close</h3>
+                <select name="sat-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="sat-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <h3 id="sunday">Sunday: Open-Close</h3>
+                <select name="sun-open">
+                    <option value="9">9:00 am</option>
+                    <option value="10">10:00 am</option>
+                    <option value="11">11:00 am</option>
+                    <option value="12">12:00 pm</option>
+                    <option value="13">1:00 pm</option>
+                    <option value="14">2:00 pm</option>
+                    <option value="15">3:00 pm</option>
+                    <option value="16">4:00 pm</option>
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                </select>
+                <select name="sun-close">
+                    <option value="17">5:00 pm</option>
+                    <option value="18">6:00 pm</option>
+                    <option value="19">7:00 pm</option>
+                    <option value="20">8:00 pm</option>
+                    <option value="21">9:00 pm</option>
+                    <option value="22">10:00 pm</option>
+                    <option value="23">11:00 pm</option>
+                    <option value="0">12:00 am</option>
+                    <option value="1">1:00 am</option>
+                    <option value="2">2:00 am</option>
+                    <option value="3">3:00 am</option>
+                    <option value="4">4:00 am</option>
+                    <option value="5">5:00 am</option>
+                </select>
+                <input type="checkbox" name="vehicle1" value="closed">Closed<br>
+                <hr>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <form id="update-address">
+            <h2>Update address:</h2>
+            <p>Address Line 1:</p>
+            <input>
+            <p>Address Line 2:</p>
+            <input>
+            <button>Submit</button>
+        </form>
+    </div>
+    <div class="container">
+        <form id="add-employee">
+            <h2>Add employee to permissions:</h2>
+            <p>Username:</p>
+            <input>
+            <p>Password:</p>
+            <input>
+            <p>Email:</p>
+            <input>
+            <button>Submit</button>
+        </form>
+    </div>
+    <div class="container">
+            <form id="del-employee">
+                <h2>Remove employee from permissions:</h2>
+                <p>Username:</p>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <button>DELETE</button>
+            </form>
+        </div>
+</body>
+
+</html>
