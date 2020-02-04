@@ -1,23 +1,4 @@
-function searchGame(title){
-	var apiKey = 'CEx4Nnqb8e' //get rid of it
-	var queryURL = `https://www.boardgameatlas.com/api/search?name=${title}&client_id=${apiKey}`; 
-	$.ajax({
-	url: queryURL,
-	method: "GET"
-}).then(function(response) {
-	// console.log(response);
-	// renderRow(response);
-	parseBoardGameData(response);
-	// This is where we will run a post route
 
-}).catch(err => {
-	throw err;
-});
-};
-
-// function renderRow(GameData){
-//     $("tbody").append(`<tr><td>${GameData.Title}</td><td>${GameData.Year}</td><td>${GameData.Actors}</td></tr>`)
-// }
 
 // Search Event
 $("form.gameName").on("submit", function(e) {
@@ -48,5 +29,21 @@ function parseBoardGameData(data) {
 	console.log(boardGame);
 }
 
+function searchGame(title){
+	var apiKey = 'CEx4Nnqb8e' //get rid of it
+	var queryURL = `https://www.boardgameatlas.com/api/search?name=${title}&client_id=${apiKey}`; 
+	$.ajax({
+	url: queryURL,
+	method: "GET"
+}).then(function(response) {
+	// console.log(response);
+	// renderRow(response);
+	parseBoardGameData(response);
+	// This is where we will run a post route
+
+}).catch(err => {
+	throw err;
+});
+};
 
 		// $(".input[name=gameName]").val().trim();
