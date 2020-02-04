@@ -9,7 +9,6 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .get(permissionsController.findById)
   .put(permissionsController.update)
   .delete(permissionsController.remove);
 

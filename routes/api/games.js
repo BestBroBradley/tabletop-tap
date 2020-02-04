@@ -9,7 +9,6 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .get(gamesController.findById)
   .put(gamesController.update)
   .delete(gamesController.remove);
 

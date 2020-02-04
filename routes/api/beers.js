@@ -9,7 +9,6 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .get(beersController.findById)
   .put(beersController.update)
   .delete(beersController.remove);
 

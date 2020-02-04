@@ -9,7 +9,6 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .get(hoursController.findById)
   .put(hoursController.update)
   .delete(hoursController.remove);
 

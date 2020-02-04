@@ -1,5 +1,5 @@
 const express = require("express");
-
+const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -10,8 +10,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-require("./routes")(app);
-require("./routes")(app);
+app.use(routes)
 
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {

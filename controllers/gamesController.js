@@ -1,11 +1,40 @@
 const db = require("../models")
 
 module.exports = {
-    findAll: function(req, res) {
-        db.Games
-        .find(req.query)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err))
-        },
-    
+    findAll: function (req, res) {
+        db.Games.findAll().then((data) => {
+            res.json(data)
+        }).catch((err) => {
+            res.status(500).end()
+        })
+    },
+    create: function (req, res) {
+        db.Games.create(req.body).then(data => {
+            res.json(data)
+        }).catch((err) => {
+            res.status(500).end()
+        })
+    },
+
+    update: function (req, res) {
+        db.Games.update(req.body, {
+            where: {
+                id: req.body.id
+            }
+        }).then(data => {
+            res.json(data)
+        }).catch((err) => {
+            res.status(500).end()
+        })
+    },
+
+    remove: function (req, res) {
+        db.Games.destroy({where: {
+            id: req.params.id
+        }}).then(data => {
+            res.json(data)
+        }).catch((err) => {
+            res.status(500).end()
+        })
+    }
 }
