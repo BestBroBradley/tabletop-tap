@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/BestBroBradley/project-two.git"
   },
-  "author": "Allison Bradley, Juan Castellanos Nevarro, Dan Brown",
+  "author": "Allison Bradley, Juan Castellanos Navarro, Dan Brown",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BestBroBradley/project-two/issues"
   },
   "homepage": "https://github.com/BestBroBradley/project-two#readme",
   "dependencies": {
+    "bcrypt": "^3.0.7",
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.3"
