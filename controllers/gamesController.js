@@ -9,6 +9,7 @@ module.exports = {
         })
     },
     create: function (req, res) {
+        console.log("test create")
         db.Games.create(req.body).then(data => {
             res.json(data)
         }).catch((err) => {

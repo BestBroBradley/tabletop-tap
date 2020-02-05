@@ -1,9 +1,8 @@
 
 
 // Search Event
-$("form.gameName").on("submit", function(e) {
+$("#add-game").on("submit", function(e) {
 	e.preventDefault();
-	console.log();
 	let title = $(this).find("input").val().trim();
 
 	searchGame(title);
@@ -36,15 +35,12 @@ function searchGame(title){
 	url: queryURL,
 	method: "GET"
 }).then(function(response) {
-	// console.log(response);
 	// renderRow(response);
 	var boardGame = parseBoardGameData(response);
 	console.log(boardGame);
 	// This is where we will run a post route
-
+	$.post("/api/games", boardGame);
 }).catch(err => {
 	throw err;
 });
 };
-
-		// $(".input[name=gameName]").val().trim();
