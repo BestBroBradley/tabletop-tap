@@ -4,26 +4,24 @@
 $("#add-game").on("submit", function(e) {
 	e.preventDefault();
 	let title = $(this).find("input").val().trim();
-
 	searchGame(title);
-
 });
 
 function parseBoardGameData(data) {
 	var game = data.games[0];
 	var boardGame = {
-		image_thumb: game.thumb_url,
-		image_original: game.image_url,
+		img_thumb: game.thumb_url,
+		img_original: game.image_url,
 		url: game.url,
 		game_name: game.name,
-		rating: game.average_user_rating,
-		min_time: game.min_playtime,
-		max_time: game.max_playtime,
-		min_players: game.min_players,
-		max_players: game.max_players,
+		rating: parseFloat(game.average_user_rating).toFixed(2),
+		min_time: parseInt(game.min_playtime),
+		max_time: parseInt(game.max_playtime),
+		min_players: parseInt(game.min_players),
+		max_players: parseInt(game.max_players),
 		short_description: game.description_preview,
 		long_description: game.description,
-		categories: game.categories
+		categories: game.categories[0].id
 	};
 	return boardGame
 }
@@ -44,3 +42,7 @@ function searchGame(title){
 	throw err;
 });
 };
+
+function onLoad() {
+	
+}

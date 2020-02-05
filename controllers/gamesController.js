@@ -9,8 +9,9 @@ module.exports = {
         })
     },
     create: function (req, res) {
-        console.log("test create")
-        db.Games.create(req.body).then(data => {
+        const newGame = toNum(req.body)
+        db.Games.create(newGame).then(data => {
+            console.log(data)
             res.json(data)
         }).catch((err) => {
             res.status(500).end()
@@ -41,6 +42,14 @@ module.exports = {
     }
 }
 
+const toNum = ((data) => {
+    data.rating = parseFloat(data.rating)
+    data.min_time = parseInt(data.min_time)
+    data.max_time = parseInt(data.max_time)
+    data.min_players = parseInt(data.min_players)
+    data.max_players = parseInt(data.max_players)
+    return data
+})
 
 // json object for testing purposes
 // {
