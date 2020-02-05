@@ -11,31 +11,43 @@ module.exports = {
     create: function (req, res) {
         db.Users.create(req.body).then(data => {
             res.json(data)
-        }).catch((err) => {
+        }).catch(() => {
             res.status(500).end()
         })
     },
 
     update: function (req, res) {
-        console.log(req.body.login)
-        db.Users.update(req.body, {
-            where: {
-                login: req.body.login
-            }
-        }).then(data => {
-            res.json(data)
-        }).catch((err) => {
-            res.status(500).end()
-        })
+       db.Users.findOne({where:{id:req.body.id}}).then(user=>{
+           user.update(req.body).then(()=>{
+               
+           })
+       })
     },
+
+
+
+
+    // console.log(req.body.id)
+    // db.Users.update(req.body, {
+    //     where: {
+    //         id: req.body.id
+    //     }
+    // }).then(data => {
+    //     res.json(data)
+    // }).catch((err) => {
+    //    console.log(err)
+    // })
+
+
+
 
     remove: function (req, res) {
         db.Users.destroy({where: {
-            id: req.params.id
+            login: req.params.login
         }}).then(data => {
             res.json(data)
-        }).catch((err) => {
-            res.status(500).end()
+        }).catch(() => {
+            res.status(404).end()
         })
     }
 }
