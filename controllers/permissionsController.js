@@ -9,7 +9,6 @@ module.exports = {
         })
     },
     create: function (req, res) {
-        console.log(req.body)
         db.Users.create(req.body).then(data => {
             res.json(data)
         }).catch((err) => {
@@ -17,9 +16,10 @@ module.exports = {
         })
     },
     update: function (req, res) {
+        console.log(req.body.login)
         db.Users.update(req.body, {
             where: {
-                id: req.body.id
+                login: req.body.login
             }
         }).then(data => {
             res.json(data)
