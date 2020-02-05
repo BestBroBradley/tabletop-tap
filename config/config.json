@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Mysqlis110%fabulous!",
+    "password": "password",
     "database": "tabletoptap",
     "host": "127.0.0.1",
     "dialect": "mysql",

@@ -4,12 +4,12 @@ const permissionsController = require("../../controllers/permissionsController")
 // Matches with "/api/books"
 router.route("/")
   .get(permissionsController.findAll)
-  .post(permissionsController.create);
+  .post(permissionsController.create)
+  .put(permissionsController.update);
 
 // Matches with "/api/books/:id"
 router
-  .route("/:id")
-  .put(permissionsController.update)
+  .route("/:login")
   .delete(permissionsController.remove);
 
 module.exports = router;
