@@ -14,11 +14,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         short_description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         long_description: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         rating: {
             type: DataTypes.DECIMAL(6, 2)
@@ -40,9 +40,9 @@ module.exports = function(sequelize, DataTypes) {
         max_players: {
             type: DataTypes.INTEGER
         },
-        category: {
+        categories: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
 
         }
     })

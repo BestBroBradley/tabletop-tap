@@ -15,7 +15,6 @@ module.exports = {
             res.status(500).end()
         })
     },
-
     update: function (req, res) {
         console.log(req.body.login)
         db.Users.update(req.body, {
