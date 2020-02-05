@@ -26,7 +26,7 @@ function parseBoardGameData(data) {
 		long_description: game.description,
 		categories: game.categories
 	};
-	console.log(boardGame);
+	return boardGame
 }
 
 function searchGame(title){
@@ -38,7 +38,8 @@ function searchGame(title){
 }).then(function(response) {
 	// console.log(response);
 	// renderRow(response);
-	parseBoardGameData(response);
+	var boardGame = parseBoardGameData(response);
+	console.log(boardGame);
 	// This is where we will run a post route
 
 }).catch(err => {
