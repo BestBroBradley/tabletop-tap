@@ -4,9 +4,14 @@ const gameRoutes = require("./games")
 const hoursRoutes = require("./hours")
 const permissionsRoutes = require("./permissions")
 
-router.use("beers", beerRoutes)
-router.use("games", gameRoutes)
-router.use("hours", hoursRoutes)
-router.use("permissions", permissionsRoutes)
+
+// /api/beers
+router.use("/beers", beerRoutes)
+// /api/games
+router.use("/games", gameRoutes)
+// /api/hours
+router.use("/hours", hoursRoutes)
+// /api/permissions
+router.use("/permissions", permissionsRoutes)
 
 module.exports = router;
