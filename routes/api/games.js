@@ -8,7 +8,7 @@ router.route("/")
 
 // Matches with "/api/books/:id"
 router
-  .route("/:id")
+  .route("/games/:id")
   .put(gamesController.update)
   .delete(gamesController.remove);
 

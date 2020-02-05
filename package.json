@@ -1,30 +1,31 @@
 {
-  "name": "tabletop-tap",
+  "name": "project-two",
   "version": "1.0.0",
-  "description": "Business website for Tabletop Tap in Englewood, CO",
-  "main": "index.js",
+  "description": "Tabletop Tap business page",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4",
+    "sequelize": "^5.21.3",
+    "mysql2": "^2.1.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BestBroBradley/project-two.git"
   },
-  "author": "Allison Bradley, Juan Castellanos Navarro, Dan Brown",
+  "author": "Allison Bradley, Dan Brown, Juan Castellanos Navarro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BestBroBradley/project-two/issues"
   },
-  "homepage": "https://github.com/BestBroBradley/project-two#readme",
-  "dependencies": {
-    "bcrypt": "^3.0.7",
-    "bcryptjs": "^2.4.3",
-    "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "mysql2": "^2.1.0",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "pug": "^2.0.4",
-    "sequelize": "^5.21.3"
-  }
+  "homepage": "https://github.com/BestBroBradley/project-two#readme"
 }
