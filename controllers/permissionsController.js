@@ -24,6 +24,23 @@ module.exports = {
        })
     },
 
+    authenticate: function(req,res) {
+   console.log("not yet buddy")
+            if(req.user){
+            console.log("yeah buddy")
+            }
+                res.json(req.user);
+              },
+        
+        
+    
+
+    
+    // app.get("/api/login", isitin ,function(req, res) {
+    //     if(req.user){
+    //     console.log("yeah buddy")
+    //     }
+    // });
 
 
 
@@ -43,7 +60,7 @@ module.exports = {
 
     remove: function (req, res) {
         db.Users.destroy({where: {
-            login: req.params.login
+            id: req.params.id
         }}).then(data => {
             res.json(data)
         }).catch(() => {

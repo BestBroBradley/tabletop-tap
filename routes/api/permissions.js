@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const passport = require("../../config/passport");
 const permissionsController = require("../../controllers/permissionsController");
 
 // Matches with "/api/books"
@@ -9,7 +10,14 @@ router.route("/")
 
 // Matches with "/api/books/:id"
 router
-  .route("/:login")
+  .route("/:id")
   .delete(permissionsController.remove);
 
+router.route("/login",)
+.post(passport.authenticate("local"),permissionsController.authenticate);
+
 module.exports = router;
+
+
+
+// passport.authenticate("local")

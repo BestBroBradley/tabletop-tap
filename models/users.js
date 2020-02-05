@@ -29,8 +29,6 @@ module.exports = function (sequelize, DataTypes) {
     // });
 
     function encryptPasswordIfChanged(user) {
-        console.log(user);
-        console.log(user.changed('password'));
         if (user.changed('password')) {
             user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null)
         }

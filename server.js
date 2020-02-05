@@ -30,6 +30,12 @@ db.sequelize.sync({ force: true }).then(function() {
     password:"password",
     email:"test@gmail.com",
     tier:"ADMIN"
+  });
+  db.Users.create({
+    login:"test2",
+    password:"password",
+    email:"test@gmail.com",
+    tier:"employee"
   })
 
   app.listen(PORT, function() {
