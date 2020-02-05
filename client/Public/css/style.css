@@ -4,6 +4,7 @@ font-family: 'Press Start 2P', cursive;
 
 body {
   font-family: 'Racing Sans One', cursive;
+  background-color: #4E342E;
 }
 
 .ff7Box {
@@ -32,4 +33,11 @@ p.body {
 
 header {
   text-align: center;
+}
+
+.secondary {
+  background-color: #fdefd4;
+}
+.primary {
+  background-color: #4E342E;
 }

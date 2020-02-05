@@ -1,31 +1,19 @@
-nav(class="navbar" role="navigation" aria-label="main navigation")
+nav(class="navbar secondary" role="navigation" aria-label="main navigation")
   .navbar-brand
-    a(class="navbar-item" href="/")
+    a(class="navbar-item" href="/html/about")
       img(src="/images/logo_white_border_thumbnail.png" alt="stein")
 
-    a(role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample")
+    a(role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="moreLinks")
       span(aria-hidden="true")
       span(aria-hidden="true")
       span(aria-hidden="true")
 
-  .navbarBasicExample(class="navbar-menu")
+  .moreLinks(class="navbar-menu")
     .navbar-start
-      a.navbar-item Home
-      a.navbar-item Documentation
-
-      div(class="navbar-item has-dropdown is-hoverable")
-        a.navbar-link More
-
-        .navbar-dropdown
-          a.navbar-item About
-          a.navbar-item Jobs
-          a.navbar-item Contact
-          hr.navbar-divider
-          a.navbar-item Report an issue
-          
+      a(class="navbar-item " href="/html/about") Home
+      a(class="navbar-item " href="/html/beers") Beers
+      a(class="navbar-item " href="/html/games") Games
+      a(class="navbar-item " href="/html/events") Events
     .navbar-end
-      .navbar-item
-        .buttons
-          a(class="button is-primary")
-            strong() Sign up
-          a(class="button is-light") Log in
+      a(class="navbar-item " href="/html/contact") Contact Us
+
