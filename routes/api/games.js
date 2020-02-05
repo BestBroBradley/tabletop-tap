@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const gamesController = require("../../controllers/gamesController");
 
-// Matches with "/api/books"
+// Matches with "/api/games"
 router.route("/")
   .get(gamesController.findAll)
   .put(gamesController.update)
