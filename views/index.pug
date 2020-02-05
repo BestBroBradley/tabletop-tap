@@ -10,37 +10,14 @@ html
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css?family=Press+Start+2P|Racing+Sans+One&display=swap" rel="stylesheet")
+    link(rel="stylesheet" type="text/css" href="/css/style.css")
   body
     include includes/navbar
-    section.section
+    header(class="is-centered")
       .container
         h1.title Hello World
         p.subtitle My first website with Bulma and Pug!
-        form.field.gameName
-          label.label Label
-          .control
-            input(class="input" type="text" placeholder="Text input" name="gameName")
-          p.help Game Title
-          button.button.is-primary Submit
+    include includes/about
     
   script(src= "/js/admin.js" type="text/javascript").
-
-//- doctype html
-//- html(lang="en")
-//-   head
-//-     title= pageTitle
-//-     script(type='text/javascript').
-//-     script(  src="https://code.jquery.com/jquery-3.4.1.min.js".
-//- 			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-//- 			crossorigin="anonymous"></script>)
-//-   body
-//-     include navbar
-//-     h1 Pug - node template engine
-//-     #container.col
-//-       if youAreUsingPug
-//-         p You are amazing
-//-       else
-//-         p Get on it!
-//-       p.
-//-         Pug is a terse and simple templating language with a
-//-         strong focus on performance and powerful features.

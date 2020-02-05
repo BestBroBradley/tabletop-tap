@@ -3,8 +3,7 @@ const router = require("express").Router();
 
 
 router.get('/', function (req, res) {
-  res.render("index", {pageTitle: "Beers", youAreUsingPug: true, 
-  sourceJS: path.join(__dirname, "../../client/public/js/pugtest.js.js")})
+  res.render("index", {pageTitle: "Beers", youAreUsingPug: true})
 })
 
 module.exports = router;
