@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     const Beers = sequelize.define("Beers", {
         beer_name: {
             type: DataTypes.STRING,
@@ -32,17 +32,17 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-				abv: {
-					type: DataTypes.DECIMAL,
-					allowNull: false,
-					validate: {
-							len: [1,4]
-					}
-				},
-				price: {
-					type: DataTypes.DECIMAL,
-					allowNull: true
-				}
-        })
-		return Beers
+        abv: {
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+            validate: {
+                len: [1, 4]
+            }
+        },
+        price: {
+            type: DataTypes.DECIMAL,
+            allowNull: true
+        }
+    })
+    return Beers
 }
