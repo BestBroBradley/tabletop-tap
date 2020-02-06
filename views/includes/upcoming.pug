@@ -1,7 +1,8 @@
-
 div(class="columns is-centered is-mobile")
   div(class="column is-half-desktop is-three-quarters-mobile")
-    p.subtitle.secondaryFont On this website...
-    ul.secondaryFont.upcoming
-      li Arcade games list
-      li Suggestions
+
+div(id="fb-root")
+script(async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0")
+
+div(id="eventsDiv" class="is-centered")
+  div(id="fbEvents" class="fb-page" data-tabs="events,timeline" data-href="https://www.facebook.com/tabletoptap" data-width="500" data-hide-cover="false")
