@@ -63,18 +63,32 @@ p.subtitle {
 }
 
 #fbEvents {
-  width: 100%
+  width: 100%;
 }
 
-#aboutUsDiv {
+#aboutUsDiv, #gamesDiv, #alphabetDiv {
   background: darkolivegreen;
   margin: 2rem;
   border: 3px solid black;
   border-radius: 2%
 }
 
-#aboutUs {
+#aboutUs, #gamesText {
   font-size: 1rem  
+}
+
+.searchText {
+  font-size: 2rem;
+  color: #fdefd4
+}
+
+#searchBtn {
+  margin-top: 10px;
+}
+
+.alphabet {
+  font-size: 2rem;
+  color: black
 }
 
 p.head {
