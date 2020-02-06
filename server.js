@@ -32,14 +32,14 @@ db.sequelize.sync({ force: true }).then(function() {
 
   db.Users.create({
     login:"test",
-    password:"password",
+    password:"Password1",
     email:"test@gmail.com",
     tier:"ADMIN"
   });
   db.Users.create({
     login:"test2",
-    password:"password",
-    email:"test@gmail.com",
+    password:"Password1",
+    email:"test1@gmail.com",
     tier:"employee"
   })
 
