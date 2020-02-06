@@ -15,9 +15,21 @@ html
   body
     include includes/navbar
     header(class="is-centered")
-      .container
-        h1.title Hello World
-        p.subtitle My first website with Bulma and Pug!
-    include includes/about
+      h1.title.secondaryFont= h1Title
+      p.subtitle.secondaryFont= subtitle
+    .bodyWrapper
+      if welcome
+        include includes/welcome
+      if about
+        include includes/about
+      if beers
+        include includes/beers
+      if games
+        include includes/games
+      if contact_us
+        include includes/contact_us
+      if upcoming
+        include includes/upcoming
     
   script(src= "/js/admin.js" type="text/javascript").
+  script(src= "/js/navbar.js" type="text/javascript")

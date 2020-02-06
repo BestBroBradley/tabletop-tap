@@ -1,8 +1,15 @@
 const path = require("path");
 const router = require("express").Router();
 
+var renderObj = {
+  pageTitle: "Welcome",
+  h1Title: "Tabletop Tap",
+  subtitle: "The Down Low",
+  welcome: true
+}
+
 router.get('/', function (req, res) {
-  res.render("index", {pageTitle: "Welcome", youAreUsingPug: true })
+  res.render("index", renderObj)
 })
 
 module.exports = router;
