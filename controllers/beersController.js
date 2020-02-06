@@ -8,7 +8,19 @@ module.exports = {
             res.status(500).end()
         })
     },
+
+    findById: function(req, res) {
+        db.Beers.findOne( {where: {
+            beer_name: req.params.id
+        }}).then(data => {
+            res.json(data)
+        }).catch(err => {
+            res.status(404).end()
+        })
+    },
+
     create: function (req, res) {
+        console.log(req.body)
         db.Beers.create(req.body).then(data => {
             res.json(data)
         }).catch((err) => {

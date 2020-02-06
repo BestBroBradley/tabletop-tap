@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <title>Admin Page</title>
     <style>
         * {
@@ -63,30 +61,33 @@
             <form id="add-beer">
                 <h2>Add a beer:</h2>
                 <h3>Beer name:</h3>
-                <input>
+                <input id="new-beer-name">
                 <h3>Brewery:</h3>
-                <input>
+                <input id="new-brewery-name">
                 <h3>Brewery location:</h3>
-                <input>
+                <input id="new-brewery-location">
                 <h3>ABV</h3>
-                <input>
+                <input id="new-abv">
                 <h3>Price</h3>
-                <input>
+                <input id="new-price">
                 <h3>Short description of beer:</h3>
-                <textarea></textarea>
+                <textarea id="new-beer-short"></textarea>
                 <h3>Longer description of beer (optional):</h3>
-                <textarea></textarea>
+                <textarea id="new-beer-long"></textarea>
                 <button>Submit</button>
             </form>
         </div>
         <div class="container">
+            <h2>Update a beer:</h2>
+            <form id="select-beer">
+            <h3>Beer name:</h3>
+            <select>
+                <option>1</option>
+                <option>2</option>
+            </select>
+            <button>Select</button>
+            </form>
             <form id="update-beer">
-                <h2>Update a beer:</h2>
-                <h3>Beer name:</h3>
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                </select>
                 <h3>Brewery:</h3>
                 <input>
                 <h3>Brewery location:</h3>
@@ -377,18 +378,19 @@
         </form>
     </div>
     <div class="container">
-            <form id="del-employee">
-                <h2>Remove employee from permissions:</h2>
-                <p>Username:</p>
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <button>DELETE</button>
-            </form>
-        </div>
+        <form id="del-employee">
+            <h2>Remove employee from permissions:</h2>
+            <p>Username:</p>
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <button>DELETE</button>
+        </form>
+    </div>
 </body>
 
 <script type="text/javascript" src="../js/admin.js"></script>
+
 </html>

@@ -4,8 +4,32 @@
 $("#add-game").on("submit", function(e) {
 	e.preventDefault();
 	let title = $(this).find("input").val().trim();
+	$("#add-game").children().val("")
 	searchGame(title);
 });
+
+$("#add-beer").on("submit", function(e) {
+	e.preventDefault();
+	const newBeer = {
+		beer_name: $("#new-beer-name").val(),
+		brewery: $("#new-brewery-name").val(),
+		brewery_location: $("#new-brewery-location").val(),
+		short_description: $("#new-beer-short").val(),
+		long_description: $("#new-beer-long").val(),
+		abv: $("#new-abv").val(),
+		price: $("#new-price").val()
+	}
+	$("#add-beer").children().val("")
+	$.post("/api/beers", newBeer).then((data) => {
+		console.log("Success!")
+	}).catch(err => {
+		throw err
+	})
+})
+
+$("#select-beer").on("submit", function(e) {
+	$.get("")
+})
 
 function parseBoardGameData(data) {
 	var game = data.games[0];
@@ -15,10 +39,10 @@ function parseBoardGameData(data) {
 		url: game.url,
 		game_name: game.name,
 		rating: parseFloat(game.average_user_rating).toFixed(2),
-		min_time: parseInt(game.min_playtime),
-		max_time: parseInt(game.max_playtime),
-		min_players: parseInt(game.min_players),
-		max_players: parseInt(game.max_players),
+		min_time: game.min_playtime,
+		max_time: game.max_playtime,
+		min_players: game.min_players,
+		max_players: game.max_players,
 		short_description: game.description_preview,
 		long_description: game.description,
 		categories: game.categories[0].id
@@ -44,5 +68,5 @@ function searchGame(title){
 };
 
 function onLoad() {
-	
+
 }
