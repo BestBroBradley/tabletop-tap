@@ -47,13 +47,11 @@
     </div>
     <div class="container">
         <form id="del-game">
-            <h2>Delete a game:</h2>
-            <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
-            <button>DELETE</button>
+					<h2>Delete a game:</h2>
+					<select id="del-game-select">
+						<option id="0">None Selected</option>
+					</select>
+					<button>DELETE</button>
         </form>
     </div>
     <div class="beerwrap">
@@ -104,14 +102,12 @@
                 <button>Submit</button>
             </form>
         </div>
-    </div>
+		</div>
     <div class="container">
         <form id="del-beer">
             <h2>Delete a beer:</h2>
-            <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+            <select id="del-beer-select">
+                <option id="0">None Selected</option>
             </select>
             <button>DELETE</button>
         </form>
@@ -379,17 +375,15 @@
         </form>
     </div>
     <div class="container">
-        <form id="del-employee">
-            <h2>Remove employee from permissions:</h2>
-            <p>Username:</p>
-            <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
-            <button>DELETE</button>
-        </form>
-    </div>
+            <form id="del-employee">
+                <h2>Remove employee from permissions:</h2>
+                <p>Username:</p>
+                <select id="del-employee-select">
+                    <option id="0">None Selected</option>
+                </select>
+                <button>DELETE</button>
+            </form>
+        </div>
 </body>
 
 <script type="text/javascript" src="../js/admin.js"></script>

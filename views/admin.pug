@@ -1,48 +1,356 @@
 doctype html
-html
-  head
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    title= pageTitle
-    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css")
-    script(defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js")
-    script(
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous")
-    link(href="https://fonts.googleapis.com/css?family=Press+Start+2P|Racing+Sans+One&display=swap" rel="stylesheet")
-    link(rel="stylesheet" type="text/css" href="/css/style.css")
-  body
-    include includes/navbar
-    section.section
-      .container
-        h1.title Hello World
-        p.subtitle My first website with Bulma and Pug!
-        form.field.gameName
-          label.label Label
-          .control
-            input(class="input" type="text" placeholder="Text input" name="gameName")
-          p.help Game Title
-          button.button.is-primary Submit
-    
-  script(src= "/js/admin.js" type="text/javascript").
-
-//- doctype html
-//- html(lang="en")
-//-   head
-//-     title= pageTitle
-//-     script(type='text/javascript').
-//-     script(  src="https://code.jquery.com/jquery-3.4.1.min.js".
-//- 			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-//- 			crossorigin="anonymous"></script>)
-//-   body
-//-     include navbar
-//-     h1 Pug - node template engine
-//-     #container.col
-//-       if youAreUsingPug
-//-         p You are amazing
-//-       else
-//-         p Get on it!
-//-       p.
-//-         Pug is a terse and simple templating language with a
-//-         strong focus on performance and powerful features.
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
+  title Admin Page
+  style.
+    * {
+    font-family: sans-serif
+    }
+    .container {
+    border: 2px solid black;
+    padding: 10px 20px 20px;
+    flex: 1;
+    margin: 10px 0;
+    }
+    h1 {
+    text-align: center;
+    }
+    .beerwrap {
+    display: flex;
+    margin: -10px 0
+    }
+    textarea {
+    width: 100%;
+    height: 200px
+    }
+h1 Admin Page
+.container
+  form#add-game
+    h2 Add a game:
+    input
+    button Submit
+.container
+  form#del-game
+    h2 Delete a game:
+    select
+      option 1
+      option 2
+      option 3
+    button DELETE
+.beerwrap
+  .container
+    form#add-beer
+      h2 Add a beer:
+      h3 Beer name:
+      input
+      h3 Brewery:
+      input
+      h3 Brewery location:
+      input
+      h3 ABV
+      input
+      h3 Price
+      input
+      h3 Short description of beer:
+      textarea
+      h3 Longer description of beer (optional):
+      textarea
+      button Submit
+  .container
+    form#update-beer
+      h2 Update a beer:
+      h3 Beer name:
+      select
+        option 1
+        option 2
+      h3 Brewery:
+      input
+      h3 Brewery location:
+      input
+      h3 ABV
+      input
+      h3 Price
+      input
+      h3 Short description of beer:
+      textarea
+      h3 Longer description of beer (optional):
+      textarea
+      button Submit
+.container
+  form#del-beer
+    h2 Delete a beer:
+    select
+      option 1
+      option 2
+      option 3
+    button DELETE
+.container
+  h2 Update Hours:
+  hr
+  .day
+    form#update-hours
+      h3#monday Monday: Open-Close
+      select(name='mon-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='mon-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      h3#tuesday Tuesday: Open-Close
+      select(name='tues-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='tues-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      h3#wednesday Wednesday: Open-Close
+      select(name='weds-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='weds-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      h3#thursday Thursday: Open-Close
+      select(name='thurs-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='thurs-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      h3#friday Friday: Open-Close
+      select(name='fri-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='fri-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      h3#saturday Saturday: Open-Close
+      select(name='sat-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='sat-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      h3#sunday Sunday: Open-Close
+      select(name='sun-open')
+        option(value='9') 9:00 am
+        option(value='10') 10:00 am
+        option(value='11') 11:00 am
+        option(value='12') 12:00 pm
+        option(value='13') 1:00 pm
+        option(value='14') 2:00 pm
+        option(value='15') 3:00 pm
+        option(value='16') 4:00 pm
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+      select(name='sun-close')
+        option(value='17') 5:00 pm
+        option(value='18') 6:00 pm
+        option(value='19') 7:00 pm
+        option(value='20') 8:00 pm
+        option(value='21') 9:00 pm
+        option(value='22') 10:00 pm
+        option(value='23') 11:00 pm
+        option(value='0') 12:00 am
+        option(value='1') 1:00 am
+        option(value='2') 2:00 am
+        option(value='3') 3:00 am
+        option(value='4') 4:00 am
+        option(value='5') 5:00 am
+      input(type='checkbox' name='vehicle1' value='closed')
+      | Closed
+      br
+      hr
+      button Submit
+.container
+  form#update-address
+    h2 Update address:
+    p Address Line 1:
+    input
+    p Address Line 2:
+    input
+    button Submit
+if user
+  if user.tier === "ADMIN"
+    .container
+      form#add-employee
+        h2 Add employee to permissions:
+        p Username:
+        input
+        p Password:
+        input
+        p Email:
+        input
+        button Submit
+    .container
+      form#del-employee
+        h2 Remove employee from permissions:
+        p Username:
+        select
+          option 1
+          option 2
+          option 3
+        button DELETE
+script(type='text/javascript' src='../js/admin.js')

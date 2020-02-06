@@ -1,9 +1,8 @@
 const path = require("path");
 const router = require("express").Router();
 
-
-router.get('/', function (req, res) {
-  res.render("admin", {pageTitle: "Admin", youAreUsingPug: true})
+router.get('/', function (req, res) { 
+  res.render("admin", {pageTitle: "Admin",user:req.user, youAreUsingPug: true})
 })
 
 module.exports = router;

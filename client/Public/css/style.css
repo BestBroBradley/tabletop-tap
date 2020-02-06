@@ -4,19 +4,45 @@ font-family: 'Press Start 2P', cursive;
 
 body {
   font-family: 'Racing Sans One', cursive;
+  background-color: #4E342E;
+  color: whitesmoke;
+}
+
+header {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+p.subtitle {
+  text-align: center;
+}
+
+.secondary {
+  background-color: #fdefd4;
+}
+.primary {
+  background-color: #4E342E;
+}
+.secondaryFont {
+  color: #fdefd4;
+}
+.primaryFont {
+  color: #4E342E;
+}
+
+.bodyWrapper {
+  min-height: 100vh;
 }
 
 .ff7Box {
   font-family: 'Press Start 2P', cursive;
   background-color: rgb(45, 45, 167);
-  margin: 1rem 0;
+  margin: 1rem 1rem;
+  border: 3px solid black;
+  border-radius: 2%;
   /* box-sizing: border-box;
   max-width: 90vh;
   margin: 1rem 1rem; */
-}
-
-.arcadeWrapper {
-  background-color: rgb(45, 45, 167);
 }
 
 p.head {
@@ -30,6 +56,52 @@ p.body {
   color: whitesmoke;
 }
 
-header {
+#carousel {
+  border: 3px solid black;
+  margin-top: 2rem;
+}
+
+.upcoming {
+  font-size: 1rem;
   text-align: center;
+}
+
+
+/* Animations */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
 }
