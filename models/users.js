@@ -9,11 +9,19 @@ module.exports = function (sequelize, DataTypes) {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                is:["(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*"],
+                len: [8]
+            }
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true,
+            validate:{
+                isEmail: true
+            }
         },
         tier: {
             type: DataTypes.STRING,
@@ -51,7 +59,7 @@ module.exports = function (sequelize, DataTypes) {
     //         return user.password = bcrypt.hashSync(user.password, salt);
     //     }
     // }
-    
+
     Users.beforeCreate(encryptPasswordIfChanged);
     Users.beforeUpdate(encryptPasswordIfChanged);
     return Users;

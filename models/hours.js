@@ -1,77 +1,41 @@
 module.exports = function (sequelize, DataTypes) {
     const Hours = sequelize.define("Hours", {
-        business_id: {
-            type: DataTypes.INTEGER
-        },
-        monday_open: {
-            type: DataTypes.DECIMAL(4,2),
+        day: {
+            type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 5
+            unique: true,
+            validate:{
+                dayofTheweek(value) {
+                    const days= ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+                    if(days.indexOf(value.toLowerCase())=== -1){
+                        throw new Error("has to be a day of the week");
+                    }
+                  }
+            }
         },
-        monday_close: {
-            type: DataTypes.DECIMAL(4,2),
+
+        open_time: {
+            type: DataTypes.DECIMAL(4, 2),
             allowNull: false,
-            defaultValue: 5
+            defaultValue: 12
+            , validate: {
+                max: 24,                  // only allow values <= 23.59
+                min: 0.01,
+            }
         },
-        tuesday_open: {
-            type: DataTypes.DECIMAL(4,2),
+        close_time: {
+            type: DataTypes.DECIMAL(4, 2),
             allowNull: false,
-            defaultValue: 5
-        },
-        tuesday_close: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        wednesday_open: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        wednesday_close: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        thursday_open: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        thursday_close: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        friday_open: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        friday_close: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        saturday_open: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        saturday_close: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        sunday_open: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
-        },
-        sunday_close: {
-            type: DataTypes.DECIMAL(4,2),
-            allowNull: false,
-            defaultValue: 5
+            defaultValue: 24
+            , validate: {
+                max: 24,                  // only allow values <= 23.59
+                min: 0.01,
+                closeTime(value) {
+                    if(parseInt(value) <= parseInt(this.open_time)){
+                        throw new Error("you can't close before you open");
+                    }
+                  }
+            }
         }
     })
     return Hours
