@@ -91,6 +91,14 @@ p.subtitle {
   color: black
 }
 
+.resultDiv {
+  border: 3px solid black;
+  border-radius: 2%;
+  background: rgb(45, 45, 167);
+  font-family: 'Press Start 2P', cursive;
+  margin: 10px;
+}
+
 p.head {
   text-indent: 0;
   font-size: 1rem;
