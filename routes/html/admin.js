@@ -1,8 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
 
-
-router.get('/', function (req, res) {
+router.get('/', function (req, res) { 
   res.render("admin", {pageTitle: "Admin",user:req.user, youAreUsingPug: true})
 })
 
