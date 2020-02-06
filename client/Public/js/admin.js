@@ -11,13 +11,13 @@ $("#add-game").on("submit", function(e) {
 $("#add-beer").on("submit", function(e) {
 	e.preventDefault();
 	const newBeer = {
-		beer_name: $("#new-beer-name").val(),
-		brewery: $("#new-brewery-name").val(),
-		brewery_location: $("#new-brewery-location").val(),
-		short_description: $("#new-beer-short").val(),
-		long_description: $("#new-beer-long").val(),
-		abv: $("#new-abv").val(),
-		price: $("#new-price").val()
+		beer_name: $("#new-beer-name").val().trim(),
+		brewery: $("#new-brewery-name").val().trim(),
+		brewery_location: $("#new-brewery-location").val().trim(),
+		short_description: $("#new-beer-short").val().trim.(),
+		long_description: $("#new-beer-long").val().trim(),
+		abv: $("#new-abv").val().trim(),
+		price: $("#new-price").val().trim()
 	}
 	$("#add-beer").children().val("")
 	$.post("/api/beers", newBeer).then((data) => {
@@ -48,16 +48,17 @@ $("#select-beer").on("submit", function(e) {
 $("#update-beer").on("submit", function(e) {
 	e.preventDefault()
 	const updatedBeer = {
-	beer_name: $("#chosen-beer").val(),
-	brewery: $("#update-brewery").val(),
-	brewery_location: $("#update-location").val(),
-	abv: $("#update-abv").val(),
-	price: $("#update-price").val(),
-	short_description: $("#update-short").val(),
-	long_description: $("#update-long").val()
+	beer_name: $("#chosen-beer").val().trim(),
+	brewery: $("#update-brewery").val().trim(),
+	brewery_location: $("#update-location").val().trim(),
+	abv: $("#update-abv").val().trim(),
+	price: $("#update-price").val().trim(),
+	short_description: $("#update-short").val().trim(),
+	long_description: $("#update-long").val().trim()
 	}
 	let id = $("#update-beer").attr("value")
 	console.log(id)
+	$("#update-beer").children().val("")
 	$.put(`api/beers/${id}`, updatedBeer).then ((data) => {
 		console.log(data)
 	}).catch((err) => {
