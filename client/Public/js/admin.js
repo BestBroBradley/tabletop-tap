@@ -1,4 +1,8 @@
-
+// Global variables:
+var users;
+var hours;
+var games;
+var beers;
 
 // Search Event
 $("#add-game").on("submit", function(e) {
@@ -43,6 +47,47 @@ function searchGame(title){
 });
 };
 
-function onLoad() {
-	
+
+init();
+
+// OnLoad we want to grab the information from our database and store in a global variable
+function init() {
+	getTableData("games", data =>	{
+		populateDeleteSelector("game", data);
+		// Create a function that populates the update (might be the same but I am pretty tired)
+	});
+	getTableData("beers", data =>	{
+		populateDeleteSelector("beer", data);
+	});
+	getTableData("users", data =>	{
+		populateDeleteSelector("user", data);
+	});
+
+}
+// Gets the table data
+function getTableData(table, cb, query) {
+	if (query) {
+		$.get(`/api/${table}`, query, function(data) {
+			console.log(data)
+			return cb(data)
+	}).catch(err => {
+		throw err;
+	});
+	} else {
+		$.get(`/api/${table}`, function(data) {
+			console.log(data)
+			return cb(data)
+	}).catch(err => {
+		throw err;
+	});
+	}
+}
+// Populate selectors function
+function populateDeleteSelector(row, data) {
+	for (let item of data) {
+		console.log(item);
+		let selectionId = item.id;
+		let selectionName = item[`${row}_name`];
+		$(`#del-${row}-select`).append($(`<option id="${selectionId}">${selectionName}</option>`));
+	}
 }
