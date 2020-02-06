@@ -93,20 +93,6 @@ function searchGame(title) {
 	var apiKey = 'CEx4Nnqb8e' //get rid of it
 	var queryURL = `https://www.boardgameatlas.com/api/search?name=${title}&client_id=${apiKey}`;
 	$.ajax({
-<<<<<<< HEAD
-		url: queryURL,
-		method: "GET"
-	}).then(function (response) {
-		// renderRow(response);
-		var boardGame = parseBoardGameData(response);
-		console.log(boardGame);
-		// This is where we will run a post route
-		$.post("/api/games", boardGame);
-	}).catch(err => {
-		throw err;
-	});
-}
-=======
 	url: queryURL,
 	method: "GET"
 }).then(function(response) {
@@ -164,4 +150,3 @@ function populateDeleteSelector(row, data) {
 		$(`#del-${row}-select`).append($(`<option id="${selectionId}">${selectionName}</option>`));
 	}
 }
->>>>>>> 53365f9edd2d3ac0b4391ac68e5a18627ee1af22
