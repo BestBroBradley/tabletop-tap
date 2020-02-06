@@ -5,23 +5,28 @@ var db = require("../models");
 
 
 passport.use(new LocalStrategy(
+    {
+        usernameField: "login"
+    },
     function (username, password, done) {
-        console.log(username+password)
+        console.log(username + password)
         db.Users.findOne({
             where: { login: username }
-        }).then(function (user,err) {
-            if (err) { 
+        }).then(function (user, err) {
+            if (err) {
                 console.log("inside the error")
                 console.log(user)
-                return done(err); 
+                return done(err);
             }
-            
+
             // console.log("below err if")//throws error to frontend
-            if (!user) { 
-                return done(null, false); } // if there is no user sends false to front end
-            if (!user.validPassword(password)) { 
-                return done(null, false); }
-                //if there is a user but the password doesn't match sends false,
+            if (!user) {
+                return done(null, false);
+            } // if there is no user sends false to front end
+            if (!user.validPassword(password)) {
+                return done(null, false);
+            }
+            //if there is a user but the password doesn't match sends false,
             return done(null, user); //if it didn't get stuck in anything sends the authenticated user to the front end.
         });
     }
