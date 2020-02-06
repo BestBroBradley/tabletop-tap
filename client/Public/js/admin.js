@@ -33,17 +33,19 @@ $("#add-beer").on("submit", function (e) {
 
 $("#select-beer").on("submit", function (e) {
 	e.preventDefault()
-	let id = $("#choose-beer").val()
-	//  Make sure dynamically generated options have a value of the beer's id
+	let id = $("#choose-beer option:selected").val();
+	console.log(id);
+	//  Make sure dynamically generated options have a id of the beer's id
 	$.get(`/api/beers/${id}`).then((data) => {
-		$("#chosen-beer").text(data.beer_name)
-		$("#update-brewery").text(data.brewery)
-		$("#update-location").text(data.brewery_location)
-		$("#update-abv").text(data.abv)
-		$("#update-price").text(data.price)
-		$("#update-short").text(data.short_description)
-		$("#update-long").text(data.long_description)
-		$("#update-beer").attr("value", id)
+		console.log(data);
+		$("#chosen-beer").val(data.beer_name)
+		$("#update-brewery").val(data.brewery)
+		$("#update-location").val(data.brewery_location)
+		$("#update-abv").val(data.abv)
+		$("#update-price").val(data.price)
+		$("#update-short").val(data.short_description)
+		$("#update-long").val(data.long_description)
+		$("#update-beer").attr("id", id)
 	}).catch(err => {
 		throw err
 	})
@@ -60,15 +62,20 @@ $("#update-beer").on("submit", function (e) {
 		short_description: $("#update-short").val().trim(),
 		long_description: $("#update-long").val().trim()
 	}
-	let id = $("#update-beer").attr("value")
-	console.log(id)
-	$("#update-beer").children().val("")
-	$.put(`api/beers/${id}`, updatedBeer).then((data) => {
+	let id = $("#choose-beer option:selected").val();
+	console.log(updatedBeer)
+	$("#update-beer").children().val("") // Clears everything
+	$.ajax({
+		url: `/api/beers/${id}`,
+		type: 'PUT',
+		data: updatedBeer
+	}).then((data) => {
 		console.log(data)
 	}).catch((err) => {
 		throw err
-	})
-})
+	});
+});
+
 
 function parseBoardGameData(data) {
 	var game = data.games[0];
@@ -113,40 +120,52 @@ init();
 function init() {
 	getTableData("games", data =>	{
 		populateDeleteSelector("game", data);
-		// Create a function that populates the update (might be the same but I am pretty tired)
+		// // Functionality currently not added
+		// populateUpdateSelector("game", data);
 	});
 	getTableData("beers", data =>	{
 		populateDeleteSelector("beer", data);
+		populateUpdateSelector("beer", data);
 	});
-	getTableData("users", data =>	{
-		populateDeleteSelector("user", data);
+	// Functionality currently not added
+	getTableData("permissions", data =>	{
+		// console.log(data);
+		populateDeleteSelector("login", data);
+		populateUpdateSelector("login", data);
 	});
 
 }
-// Gets the table data
-function getTableData(table, cb, query) {
-	if (query) {
-		$.get(`/api/${table}`, query, function(data) {
-			console.log(data)
-			return cb(data)
+// Gets the table data //permission
+function getTableData(table, cb) {
+	$.get(`/api/${table}`, function(data) {
+		console.log(data)
+		return cb(data)
 	}).catch(err => {
 		throw err;
 	});
-	} else {
-		$.get(`/api/${table}`, function(data) {
-			console.log(data)
-			return cb(data)
-	}).catch(err => {
-		throw err;
-	});
-	}
 }
-// Populate selectors function
+// Populate delete selectors function
 function populateDeleteSelector(row, data) {
+	row = row;
 	for (let item of data) {
 		console.log(item);
 		let selectionId = item.id;
 		let selectionName = item[`${row}_name`];
-		$(`#del-${row}-select`).append($(`<option id="${selectionId}">${selectionName}</option>`));
+		if (row === "login") {
+			selectionName = item[row];
+		};
+		$(`#del-${row}-select`).append($(`<option value="${selectionId}">${selectionName}</option>`));
+	}
+}
+// Populate update selectors function
+function populateUpdateSelector(row, data) {
+	for (let item of data) {
+		console.log(item);
+		let selectionId = item.id;
+		let selectionName = item[`${row}_name`];
+		if (row === "login") {
+			selectionName = item[row];
+		};
+		$(`#choose-${row}`).append($(`<option value="${selectionId}">${selectionName}</option>`));
 	}
 }
