@@ -3,8 +3,8 @@ const router = require("express").Router();
 
 var renderObj = {
   pageTitle: "About",
-  h1Title: "About",
-  subtitle: "Whatcha' buyin'?",
+  h1Title: "Meet the Makers",
+  subtitle: "...And the Dog",
   about: true
 }
 
