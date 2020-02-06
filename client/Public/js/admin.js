@@ -28,7 +28,41 @@ $("#add-beer").on("submit", function(e) {
 })
 
 $("#select-beer").on("submit", function(e) {
-	$.get("")
+	e.preventDefault()
+	let id = $("#choose-beer").val()
+	//  Make sure dynamically generated options have a value of the beer's id
+	$.get(`/api/beers/${id}`).then ((data) => {
+		$("#chosen-beer").text(data.beer_name)
+		$("#update-brewery").text(data.brewery)
+		$("#update-location").text(data.brewery_location)
+		$("#update-abv").text(data.abv)
+		$("#update-price").text(data.price)
+		$("#update-short").text(data.short_description)
+		$("#update-long").text(data.long_description)
+		$("#update-beer").attr("value",id)
+	}).catch(err => {
+		throw err
+	})
+})
+
+$("#update-beer").on("submit", function(e) {
+	e.preventDefault()
+	const updatedBeer = {
+	beer_name: $("#chosen-beer").val(),
+	brewery: $("#update-brewery").val(),
+	brewery_location: $("#update-location").val(),
+	abv: $("#update-abv").val(),
+	price: $("#update-price").val(),
+	short_description: $("#update-short").val(),
+	long_description: $("#update-long").val()
+	}
+	let id = $("#update-beer").attr("value")
+	console.log(id)
+	$.put(`api/beers/${id}`, updatedBeer).then ((data) => {
+		console.log(data)
+	}).catch((err) => {
+		throw err
+	})
 })
 
 function parseBoardGameData(data) {

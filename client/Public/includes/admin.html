@@ -81,25 +81,26 @@
             <h2>Update a beer:</h2>
             <form id="select-beer">
             <h3>Beer name:</h3>
-            <select>
-                <option>1</option>
-                <option>2</option>
+            <select id="choose-beer">
+                <option value="1">1</option>
+                <option value="2">2</option>
             </select>
             <button>Select</button>
             </form>
             <form id="update-beer">
                 <h3>Brewery:</h3>
-                <input>
+                <p id="chosen-beer"></p>
+                <input id="update-brewery">
                 <h3>Brewery location:</h3>
-                <input>
+                <input id="update-location">
                 <h3>ABV</h3>
-                <input>
+                <input id="#update-abv">
                 <h3>Price</h3>
-                <input>
+                <input id="update-price">
                 <h3>Short description of beer:</h3>
-                <textarea></textarea>
+                <textarea id="update-short"></textarea>
                 <h3>Longer description of beer (optional):</h3>
-                <textarea></textarea>
+                <textarea id="update-long"></textarea>
                 <button>Submit</button>
             </form>
         </div>
