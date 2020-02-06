@@ -13,6 +13,7 @@ html
     link(href="https://fonts.googleapis.com/css?family=Press+Start+2P|Racing+Sans+One&display=swap" rel="stylesheet")
     link(rel="stylesheet" type="text/css" href="/css/style.css")
   body
+
     include includes/navbar
     section.section
       .container
@@ -24,6 +25,11 @@ html
             input(class="input" type="text" placeholder="Text input" name="gameName")
           p.help Game Title
           button.button.is-primary Submit
+   
+    if user
+      if user.tier === "ADMIN"
+        section
+          p This paragraph just comes up if you are authenticated as the ADMIN bruh and sis.
     
   script(src= "/js/admin.js" type="text/javascript").
 
