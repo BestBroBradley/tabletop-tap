@@ -21,4 +21,4 @@ module.exports = router;
 
 
 
-// .get(isAuthenticated("ADMIN"),()=>{console.log("yadayadayada")})
+// .get(isAuthenticated("ADMIN","/api/"),()=>{console.log("yadayadayada")})
