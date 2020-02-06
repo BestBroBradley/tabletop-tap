@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-        short_descripton: {
+        short_description: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -43,6 +43,6 @@ module.exports = function(sequelize, DataTypes) {
 					type: DataTypes.DECIMAL,
 					allowNull: true
 				}
-		})
+        })
 		return Beers
 }

@@ -15,7 +15,6 @@ module.exports = {
             res.status(500).end()
         })
     },
-
     update: function (req, res) {
         db.Users.findOne({ where: { id: req.body.id } }).then(user => {
             user.update(req.body).then((data) => {
