@@ -4,8 +4,16 @@ font-family: 'Press Start 2P', cursive;
 
 body {
   font-family: 'Racing Sans One', cursive;
-  background-color: #4E342E;
+  background-color: olive;
   color: whitesmoke;
+}
+
+.title {
+  margin-top: 2rem
+}
+img:not(#logo) {
+  border: 3px black solid;
+  border-radius: 2%
 }
 
 header {
@@ -27,7 +35,7 @@ p.subtitle {
   color: #fdefd4;
 }
 .primaryFont {
-  color: #4E342E;
+  color: olive;
 }
 
 .bodyWrapper {
@@ -37,12 +45,23 @@ p.subtitle {
 .ff7Box {
   font-family: 'Press Start 2P', cursive;
   background-color: rgb(45, 45, 167);
-  margin: 1rem 1rem;
+  margin: 2rem 1rem;
   border: 3px solid black;
   border-radius: 2%;
   /* box-sizing: border-box;
   max-width: 90vh;
   margin: 1rem 1rem; */
+}
+
+#aboutUsDiv {
+  background: darkolivegreen;
+  margin: 2rem;
+  border: 3px solid black;
+  border-radius: 2%
+}
+
+#aboutUs {
+  font-size: 1rem  
 }
 
 p.head {
@@ -66,6 +85,19 @@ p.body {
   text-align: center;
 }
 
+footer {
+  background: #fdefd4;
+  border-top: solid black 3px;
+  padding-top: 9px;
+}
+
+.footer-text {
+  color: #4a4a4a;
+}
+
+.icon {
+  margin: 1rem
+}
 
 /* Animations */
 .animated {
