@@ -1,4 +1,5 @@
 const db = require("../models")
+const toNum = require("./tools");
 
 module.exports = {
     findAll: function (req, res) {
@@ -19,7 +20,8 @@ module.exports = {
     },
 
     update: function (req, res) {
-        db.Games.update(req.body, {
+        const newGame = toNum(req.body);
+        db.Games.update(newGame, {
             where: {
                 id: req.body.id
             }
@@ -42,14 +44,13 @@ module.exports = {
     }
 }
 
-const toNum = ((data) => {
-    data.rating = parseFloat(data.rating)
-    data.min_time = parseInt(data.min_time)
-    data.max_time = parseInt(data.max_time)
-    data.min_players = parseInt(data.min_players)
-    data.max_players = parseInt(data.max_players)
-    return data
-})
+
+// data.rating = parseFloat(data.rating)
+// data.min_time = parseInt(data.min_time)
+// data.max_time = parseInt(data.max_time)
+// data.min_players = parseInt(data.min_players)
+// data.max_players = parseInt(data.max_players)
+// return data
 
 // json object for testing purposes
 // {

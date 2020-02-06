@@ -80,8 +80,7 @@
             <form id="select-beer">
             <h3>Beer name:</h3>
             <select id="choose-beer">
-                <option value="1">1</option>
-                <option value="2">2</option>
+                <option value="0">None Selected</option>
             </select>
             <button>Select</button>
             </form>
@@ -92,7 +91,7 @@
                 <h3>Brewery location:</h3>
                 <input id="update-location">
                 <h3>ABV</h3>
-                <input id="#update-abv">
+                <input id="update-abv">
                 <h3>Price</h3>
                 <input id="update-price">
                 <h3>Short description of beer:</h3>
@@ -352,33 +351,24 @@
             </form>
         </div>
     </div>
-    <div class="container">
-        <form id="update-address">
-            <h2>Update address:</h2>
-            <p>Address Line 1:</p>
-            <input>
-            <p>Address Line 2:</p>
-            <input>
-            <button>Submit</button>
-        </form>
-    </div>
+    <!-- Deleted the address line -->
     <div class="container">
         <form id="add-employee">
             <h2>Add employee to permissions:</h2>
             <p>Username:</p>
-            <input>
+            <input id="login">
             <p>Password:</p>
-            <input>
+            <input id="password">
             <p>Email:</p>
-            <input>
+            <input id="email">
             <button>Submit</button>
         </form>
     </div>
     <div class="container">
-            <form id="del-employee">
+            <form id="del-login">
                 <h2>Remove employee from permissions:</h2>
                 <p>Username:</p>
-                <select id="del-employee-select">
+                <select id="del-login-select">
                     <option id="0">None Selected</option>
                 </select>
                 <button>DELETE</button>

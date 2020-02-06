@@ -1,4 +1,6 @@
 const db = require("../models")
+const toNum = require("./tools");
+
 
 module.exports = {
     findAll: function (req, res) {
@@ -11,7 +13,7 @@ module.exports = {
 
     findById: function(req, res) {
         db.Beers.findOne( {where: {
-            beer_name: req.params.id
+            id: parseFloat(req.params.id)
         }}).then(data => {
             res.json(data)
         }).catch(err => {
@@ -21,7 +23,8 @@ module.exports = {
 
     create: function (req, res) {
         console.log(req.body)
-        db.Beers.create(req.body).then(data => {
+        const newBeer = toNum(req.body);
+        db.Beers.create(newBeer).then(data => {
             res.json(data)
         }).catch((err) => {
             res.status(500).end()
@@ -29,9 +32,11 @@ module.exports = {
     },
 
     update: function (req, res) {
-        db.Beers.update(req.body, {
+        const newBeer = toNum(req.body);
+        console.log(newBeer);
+        db.Beers.update(newBeer, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(data => {
             res.json(data)
