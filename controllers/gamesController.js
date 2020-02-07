@@ -1,5 +1,6 @@
 const db = require("../models")
 const toNum = require("./tools");
+const {Op} = require("sequelize");
 
 module.exports = {
     findAll: function (req, res) {
@@ -49,6 +50,20 @@ module.exports = {
             res.json(data)
         }).catch(() => {
             res.status(404).end()
+        })
+    },findByLetter: function(req,res){
+        const query = req.params.query;
+        console.log(query)
+        db.Games.findAll({
+            where:{
+                game_name:{ 
+                    [Op.like]:`${query}%`
+                }
+            }
+        }).then((data) => {
+            res.json(data)
+        }).catch((err) => {
+            console.log(err)
         })
     }
 }

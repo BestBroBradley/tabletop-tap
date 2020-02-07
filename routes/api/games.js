@@ -13,6 +13,7 @@ router.route("/:id")
   .put(gamesController.update)
   .delete(gamesController.remove);
 
+  router.get("/search/:query",gamesController.findByLetter);
 module.exports = router;
 
 
