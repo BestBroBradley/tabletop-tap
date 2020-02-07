@@ -8,8 +8,9 @@ router.route("/")
   .post(gamesController.create);
 
 // Matches with "/api/books/:id"
-router
-  .route("/:id")
+router.route("/:id")
+  .get(gamesController.findById)
+  .put(gamesController.update)
   .delete(gamesController.remove);
 
 module.exports = router;
