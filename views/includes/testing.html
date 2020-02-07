@@ -54,18 +54,14 @@
 </head>
 
 <body>
-  <h1>Welcome to your new website</h1>
-  <h2> Here you will create your master account to interact with your site</h2>
+  <h1>Welcome Back</h1>
+  <h2> Admins Login</h2>
   <div class="container">
     <form id="admin">
       <h3>Login</h3>
       <input id="login" name="login" required>
       <h3>Password:</h3>
       <input id="userPassword" name="password" type="password" required>
-      <h3>Re-enter Password</h3>
-      <input id="userPasswordChecker" type="password" required>
-      <h3>Email (for Password recovery)</h3>
-      <input id="email" type="email" name="email" required>
       <br><br>
       <input type="submit" id="submitBtn" value="ENTER">
     </form>
@@ -79,25 +75,19 @@
 <script language='javascript' type='text/javascript'>
   $("#admin").on("submit", function (evt) {
     evt.preventDefault()
-    console.log(this);
 
-
-    if ($("#userPassword").val().trim() === $("#userPasswordChecker").val().trim()) {
-      const newAdmin = {
+      const admin = {
         login: $("#login").val().trim(),
-        password: $("#userPassword").val().trim(),
-        email: $("#email").val().trim(),
-        tier: "TOPADMIN"
+        password: $("#userPassword").val().trim()
       };
-      $.post("/api/permissions/", newAdmin)
+      $.post("/api/permissions/login", admin)
         // on success, run this callback
-        .then(function (data) {
+        .then(function (data,err) {
+          if(err){console.log(err)}
           // log the data we found
           console.log(data);
           // tell the user we're adding a character with an alert window
-          alert("Adding admin...");
         });
-    } else alert("passwords don't match");
 
   })
 

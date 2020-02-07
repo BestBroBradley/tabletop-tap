@@ -3,7 +3,7 @@ const router = require("express").Router();
 const db = require("../../models");
 isAuthenticated = require("../../config/Middleware/isAuthenticated")
 
-router.get('/', function (req, res) {
+router.get('/signup', function (req, res) {
 
   db.Users.findAll().then(data => {
     if (data == false) {
@@ -11,12 +11,16 @@ router.get('/', function (req, res) {
         pageTitle: "Admin Sign Up", youAreUsingPug: true
       })
     } 
-      res.redirect(403,'/html/admin/signedUp')
+      res.status(403).redirect('/html/admin/');
   })
 })
 
-router.get('/signedUp',isAuthenticated, function (req, res) {
+router.get('/',isAuthenticated, function (req, res) {
   res.render("admin", { pageTitle: "Admin", youAreUsingPug: true })
+})
+
+router.get('/login', function (req, res) {
+  res.render("login", { pageTitle: "login", youAreUsingPug: true })
 })
 
 module.exports = router;
