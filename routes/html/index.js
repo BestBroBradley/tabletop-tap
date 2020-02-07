@@ -5,6 +5,7 @@ const gamesRoutes = require("./games");
 const welcomeRoutes = require("./welcome");
 const upcomingRoutes = require("./upcoming");
 const adminRoutes = require("./admin");
+const contactRoutes = require("./contact");
 
 // /html/about
 router.use("/about", aboutRoutes);
@@ -16,7 +17,9 @@ router.use("/games", gamesRoutes);
 router.use("/welcome", welcomeRoutes);
 // /html/upcoming
 router.use("/upcoming", upcomingRoutes);
-// /html/adminPug
+// /html/admin
 router.use("/admin", adminRoutes);
+// /html/contact
+router.use("/contact", contactRoutes);
 
 module.exports = router;

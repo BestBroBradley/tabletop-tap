@@ -271,3 +271,40 @@ function parseBoardGameData(data) {
 }
 
 init();
+
+
+
+
+// TIME FUNCTIONALITY
+$("#update-hours").on("submit", function (e) {
+	e.preventDefault();
+	var days = ["mon", "tues", "weds", "thurs", "fri", "sat", "sun"];
+	var timeOutput = {};
+	for (let day of days) {
+		let closed = $(`input[name=${day}]:checked`).val();
+		if (closed === "closed") {
+			var open = "closed";
+			var close = "closed";
+		} else {
+			close = "open"
+			var open = $(`select[name=${day}-open] option:selected`).val();
+			var close = $(`select[name=${day}-close] option:selected`).val();
+			// need to modulus by 24 if greater than 24 to get the proper hour
+		}
+		timeOutput[day] = {
+			closed,
+			open,
+			close
+		}
+	}
+	// // Check this functionality with Juan before using it
+	// $.ajax({
+	// 	url: `/api/hours`,
+	// 	type: 'PUT',
+	// 	data: timeOutput
+	// }).then((data) => {
+	// 	console.log(`Time table updated`);
+	// }).catch((err) => {
+	// 	throw err
+	// });
+})
