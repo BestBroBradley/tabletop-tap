@@ -22,70 +22,103 @@ head
     display: flex;
     margin: -10px 0
     }
+    .board-game-wrap {
+    display: flex;
+    margin: -10px 0
+    }
     textarea {
     width: 100%;
     height: 200px
     }
 h1 Admin Page
-.container
-  form#add-game
-    h2 Add a game:
-    input
-    button Submit
-.container
-  form#del-game
-    h2 Delete a game:
-    select
-      option 1
-      option 2
-      option 3
-    button DELETE
 .beerwrap
   .container
     form#add-beer
       h2 Add a beer:
       h3 Beer name:
-      input
+      input#new-beer-name
       h3 Brewery:
-      input
+      input#new-brewery-name
       h3 Brewery location:
-      input
+      input#new-brewery-location
       h3 ABV
-      input
-      h3 Price
-      input
+      input#new-abv
       h3 Short description of beer:
-      textarea
+      textarea#new-beer-short
       h3 Longer description of beer (optional):
-      textarea
+      textarea#new-beer-long
       button Submit
   .container
-    form#update-beer
-      h2 Update a beer:
+    h2 Update a beer:
+    form#select-beer
       h3 Beer name:
-      select
-        option 1
-        option 2
+      select#choose-beer
+        option(value='0') None Selected
+      button Select
+    form#update-beer
       h3 Brewery:
-      input
+      p#chosen-beer
+      input#update-brewery
       h3 Brewery location:
-      input
+      input#update-location
       h3 ABV
-      input
-      h3 Price
-      input
+      input#update-abv
       h3 Short description of beer:
-      textarea
+      textarea#update-short
       h3 Longer description of beer (optional):
-      textarea
+      textarea#update-long
       button Submit
 .container
   form#del-beer
     h2 Delete a beer:
-    select
-      option 1
-      option 2
-      option 3
+    select#del-beer-select
+      option#0 None Selected
+    button DELETE
+.board-game-wrap
+  .container
+    form#api-board-game
+      h2 Search the API:
+      input
+      button Search
+  .container
+    form#select-board-game
+      h3 Update a Board Game:
+      select#choose-game
+        option(value='0') None Selected
+      button Select
+.container
+  form#board-game-form(method='post' action='/api/games')
+    h2 Add a Game:
+    h3 Board Game Name:
+    input(name='game_name')
+    h3 Rating:
+    input(name='rating')
+    h3 Category:
+    input(name='categories')
+    h3 Minimum Time:
+    input(name='min_time')
+    h3 Maximum Time
+    input(name='max_time')
+    h3 Minimum Players
+    input(name='min_players')
+    h3 Maximum Players:
+    input(name='max_players')
+    h3 Shorter Description of the Game:
+    textarea(name='short_description')
+    h3 Longer Description of the Game (optional):
+    textarea(name='long_description')
+    h3 Image Url (Thumbnail)
+    input(name='img_thumb')
+    h3 Image Url (Large)
+    input(name='img_original')
+    h3 Url To Purchase Game
+    input(name='url')
+    button Submit
+.container
+  form#del-game
+    h2 Delete a game:
+    select#del-game-select
+      option#0 None Selected
     button DELETE
 .container
   h2 Update Hours:
@@ -115,13 +148,13 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='mon' value='closed')
       | Closed
       br
       hr
@@ -148,13 +181,13 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='tues' value='closed')
       | Closed
       br
       hr
@@ -181,13 +214,13 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='weds' value='closed')
       | Closed
       br
       hr
@@ -214,13 +247,13 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='thurs' value='closed')
       | Closed
       br
       hr
@@ -247,13 +280,13 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='fri' value='closed')
       | Closed
       br
       hr
@@ -280,13 +313,13 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='sat' value='closed')
       | Closed
       br
       hr
@@ -313,44 +346,33 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='0') 12:00 am
-        option(value='1') 1:00 am
-        option(value='2') 2:00 am
-        option(value='3') 3:00 am
-        option(value='4') 4:00 am
-        option(value='5') 5:00 am
-      input(type='checkbox' name='vehicle1' value='closed')
+        option(value='24') 12:00 am
+        option(value='25') 1:00 am
+        option(value='26') 2:00 am
+        option(value='27') 3:00 am
+        option(value='28') 4:00 am
+        option(value='29') 5:00 am
+      input(type='checkbox' name='sun' value='closed')
       | Closed
       br
       hr
       button Submit
+// Deleted the address line
 .container
-  form#update-address
-    h2 Update address:
-    p Address Line 1:
-    input
-    p Address Line 2:
-    input
+  form#add-employee
+    h2 Add employee to permissions:
+    p Username:
+    input#login
+    p Password:
+    input#password
+    p Email:
+    input#email
     button Submit
-if user
-  if user.tier === "ADMIN"
-    .container
-      form#add-employee
-        h2 Add employee to permissions:
-        p Username:
-        input
-        p Password:
-        input
-        p Email:
-        input
-        button Submit
-    .container
-      form#del-employee
-        h2 Remove employee from permissions:
-        p Username:
-        select
-          option 1
-          option 2
-          option 3
-        button DELETE
-script(type='text/javascript' src='../js/admin.js')
+.container
+  form#del-login
+    h2 Remove employee from permissions:
+    p Username:
+    select#del-login-select
+      option#0 None Selected
+    button DELETE
+script(type='text/javascript' src='/js/admin.js')
