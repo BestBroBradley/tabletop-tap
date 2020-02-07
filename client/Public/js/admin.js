@@ -286,5 +286,39 @@ function populateUpdateSelector(row, data) {
 	}
 }
 
-// This initializes all of the selector fields
-init();
+
+// TIME FUNCTIONALITY
+$("#update-hours").on("submit", function (e) {
+	e.preventDefault();
+	var days = ["mon", "tues", "weds", "thurs", "fri", "sat", "sun"];
+	var timeOutput = {};
+	for (let day of days) {
+		let closed = $(`input[name=${day}]:checked`).val();
+		if (closed === "closed") {
+			var open = "closed";
+			var close = "closed";
+			closed = true;
+		} else {
+			closed = false; 
+			var open = $(`select[name=${day}-open] option:selected`).val();
+			var close = $(`select[name=${day}-close] option:selected`).val();
+			// need to modulus by 24 if greater than 24 to get the proper hour
+		}
+		timeOutput[day] = {
+			closed_day,
+			open_time,
+			close_time,
+			day: day
+		}
+	}
+	// // Check this functionality with Juan before using it
+	// $.ajax({
+	// 	url: `/api/hours`,
+	// 	type: 'PUT',
+	// 	data: timeOutput
+	// }).then((data) => {
+	// 	console.log(`Time table updated`);
+	// }).catch((err) => {
+	// 	throw err
+	// });
+})
