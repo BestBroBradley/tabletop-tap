@@ -9,6 +9,15 @@ module.exports = {
             res.status(500).end()
         })
     },
+    findById: function(req, res) {
+        db.Games.findOne( {where: {
+            id: parseFloat(req.params.id)
+        }}).then(data => {
+            res.json(data)
+        }).catch(err => {
+            res.status(404).end()
+        })
+    },
     create: function (req, res) {
         const newGame = toNum(req.body)
         db.Games.create(newGame).then(data => {
@@ -18,12 +27,12 @@ module.exports = {
             res.status(500).end()
         })
     },
-
+    
     update: function (req, res) {
         const newGame = toNum(req.body);
         db.Games.update(newGame, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(data => {
             res.json(data)
