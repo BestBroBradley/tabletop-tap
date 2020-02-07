@@ -20,6 +20,7 @@ router.get('/',isAuthenticated, function (req, res) {
 })
 
 router.get('/login', function (req, res) {
+  
   res.render("login", { pageTitle: "login", youAreUsingPug: true })
 })
 
