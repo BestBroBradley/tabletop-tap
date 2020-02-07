@@ -26,13 +26,17 @@ module.exports = {
     },
 
     authenticate: function (req, res) {
-        console.log("not yet buddy")
+        
         if (req.user) {
-            console.log("yeah buddy")
+            res.sendStatus(200,"/html/admin")
         }
-        res.json(req.user);
+        
     },
 
+    logout: function(req, res){
+        req.logout();
+        res.sendStatus(200,"/html/admin/login");
+      },
 
 
 

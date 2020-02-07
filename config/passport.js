@@ -9,7 +9,6 @@ passport.use(new LocalStrategy(
         usernameField: "login"
     },
     function (username, password, done) {
-        console.log(username + password)
         db.Users.findOne({
             where: { login: username }
         }).then(function (user, err) {

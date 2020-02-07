@@ -28,6 +28,10 @@
             display: flex;
             margin: -10px 0
         }
+        .board-game-wrap {
+            display: flex;
+            margin: -10px 0
+        }
 
         textarea {
             width: 100%;
@@ -38,22 +42,6 @@
 
 <body>
     <h1>Admin Page</h1>
-    <div class="container">
-        <form id="add-game">
-            <h2>Add a game:</h2>
-            <input>
-            <button>Submit</button>
-        </form>
-    </div>
-    <div class="container">
-        <form id="del-game">
-					<h2>Delete a game:</h2>
-					<select id="del-game-select">
-						<option id="0">None Selected</option>
-					</select>
-					<button>DELETE</button>
-        </form>
-    </div>
     <div class="beerwrap">
         <div class="container">
             <form id="add-beer">
@@ -66,8 +54,6 @@
                 <input id="new-brewery-location">
                 <h3>ABV</h3>
                 <input id="new-abv">
-                <h3>Price</h3>
-                <input id="new-price">
                 <h3>Short description of beer:</h3>
                 <textarea id="new-beer-short"></textarea>
                 <h3>Longer description of beer (optional):</h3>
@@ -80,8 +66,7 @@
             <form id="select-beer">
             <h3>Beer name:</h3>
             <select id="choose-beer">
-                <option value="1">1</option>
-                <option value="2">2</option>
+                <option value="0">None Selected</option>
             </select>
             <button>Select</button>
             </form>
@@ -92,9 +77,7 @@
                 <h3>Brewery location:</h3>
                 <input id="update-location">
                 <h3>ABV</h3>
-                <input id="#update-abv">
-                <h3>Price</h3>
-                <input id="update-price">
+                <input id="update-abv">
                 <h3>Short description of beer:</h3>
                 <textarea id="update-short"></textarea>
                 <h3>Longer description of beer (optional):</h3>
@@ -110,6 +93,64 @@
                 <option id="0">None Selected</option>
             </select>
             <button>DELETE</button>
+        </form>
+    </div>
+    <div class="board-game-wrap">
+        <div class="container">
+            <form id="api-board-game">
+                <h2>Search the API:</h2>
+                <input>
+                <button>Search</button>
+            </form>
+        </div>
+        <div class="container">
+            <form id="select-board-game">
+            <h3>Update a Board Game:</h3>
+            <select id="choose-game">
+                <option value="0">None Selected</option>
+            </select>
+            <button>Select</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        
+        <form id="board-game-form" method="post" action="/api/games">
+            <h2>Add a Game:</h2>
+            <h3>Board Game Name:</h3>
+            <input name="game_name">
+            <h3>Rating:</h3>
+            <input name="rating">
+            <h3>Category:</h3>
+            <input name="categories">
+            <h3>Minimum Time:</h3>
+            <input name="min_time">
+            <h3>Maximum Time</h3>
+            <input name="max_time">
+            <h3>Minimum Players</h3>
+            <input name="min_players">
+            <h3>Maximum Players:</h3>
+            <input name="max_players"></input>
+            <h3>Shorter Description of the Game:</h3>
+            <textarea name="short_description"></textarea>
+            <h3>Longer Description of the Game (optional):</h3>
+            <textarea name="long_description"></textarea>
+            <h3>Image Url (Thumbnail)</h3>
+            <input name="img_thumb">
+            <h3>Image Url (Large)</h3>
+            <input name="img_original">
+            <h3>Url To Purchase Game</h3>
+            <input name="url"></input>
+            <button>Submit</button>
+        </form>
+    </div>
+    <div class="container">
+        <form id="del-game">
+					<h2>Delete a game:</h2>
+					<select id="del-game-select">
+						<option id="0">None Selected</option>
+					</select>
+					<button>DELETE</button>
         </form>
     </div>
     <div class="container">
@@ -352,33 +393,24 @@
             </form>
         </div>
     </div>
-    <div class="container">
-        <form id="update-address">
-            <h2>Update address:</h2>
-            <p>Address Line 1:</p>
-            <input>
-            <p>Address Line 2:</p>
-            <input>
-            <button>Submit</button>
-        </form>
-    </div>
+    <!-- Deleted the address line -->
     <div class="container">
         <form id="add-employee">
             <h2>Add employee to permissions:</h2>
             <p>Username:</p>
-            <input>
+            <input id="login">
             <p>Password:</p>
-            <input>
+            <input id="password">
             <p>Email:</p>
-            <input>
+            <input id="email">
             <button>Submit</button>
         </form>
     </div>
     <div class="container">
-            <form id="del-employee">
+            <form id="del-login">
                 <h2>Remove employee from permissions:</h2>
                 <p>Username:</p>
-                <select id="del-employee-select">
+                <select id="del-login-select">
                     <option id="0">None Selected</option>
                 </select>
                 <button>DELETE</button>
