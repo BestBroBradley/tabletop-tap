@@ -1,34 +1,83 @@
-
-
+// GAME FUNCTIONALITY BELOW
 // Search board game api and populate field
 $("#api-board-game").on("submit", function (e) {
 	e.preventDefault();
 	let title = $(this).find("input").val().trim();
 	$("#api-board-game").children().val("")
-	console.log(title);
 	searchGame(title);
 });
+
+// API call to boardgame and form population
+function searchGame(title) {
+	var apiKey = 'CEx4Nnqb8e' //get rid of it
+	var queryURL = `https://www.boardgameatlas.com/api/search?name=${title}&client_id=${apiKey}`;
+	$.ajax({
+	url: queryURL,
+	method: "GET"
+}).then(function(response) {
+	var boardGame = parseBoardGameData(response);
+	if (boardGame === false) return $("#api-board-game").find("input").val("Couldn't find the game");
+	for (let key in boardGame) {
+		if (key === "short_description" || key === "long_description"){
+			$(`textarea[name=${key}]`).val(boardGame[key])
+			continue;
+		};
+		$(`input[name=${key}]`).val(boardGame[key]);
+	};
+}).catch(err => {
+	throw err;
+});
+};
+
+// Parses the data from the board game api call
+function parseBoardGameData(data) {
+	var game = data.games[0];
+	if (game === undefined) return false
+	var boardGame = {
+		img_thumb: game.thumb_url,
+		img_original: game.image_url,
+		url: game.url,
+		game_name: game.name,
+		rating: parseFloat(game.average_user_rating).toFixed(2),
+		min_time: game.min_playtime,
+		max_time: game.max_playtime,
+		min_players: game.min_players,
+		max_players: game.max_players,
+		short_description: game.description_preview,
+		long_description: game.description,
+	};
+	if (game.categories.length) {
+		boardGame.categories = game.categories[0].id;
+	} else {
+		boardGame.categories = "Unknown";
+	}
+	return boardGame
+}
 
 // Put for the selected board
 $("#select-board-game").on("submit", function (e) {
 	e.preventDefault();
 	let id = $("#choose-game option:selected").val();
-	//  Make sure dynamically generated options have a id of the beer's id
 	console.log(id);
-	$.get(`/api/games/${id}`).then((data) => {
-		for (let key in data) {
-			if (key === "short_description" || key === "long_description"){
-				$(`textarea[name=${key}]`).val(data[key]);
-				continue;
+	if (id > 0) {
+		//  Make sure dynamically generated options have a id of the beer's id
+		$.get(`/api/games/${id}`).then((data) => {
+			for (let key in data) {
+				if (key === "short_description" || key === "long_description"){
+					$(`textarea[name=${key}]`).val(data[key]);
+					continue;
+				};
+				$(`input[name=${key}]`).val(data[key]);
 			};
-			$(`input[name=${key}]`).val(data[key]);
-		};
-	}).catch(err => {
-		throw err
-	})
+		}).catch(err => {
+			throw err
+		})
+	} else {
+		$("#board-game-form").children().val("")
+	}
 })
 
-// Post board game || Put board game if 
+// Post board game if dropdown isn't default || Put board game otherwise
 $("#board-game-form").on("submit", function (e) {
 	e.preventDefault();
 	var boardGame = {
@@ -54,56 +103,50 @@ $("#board-game-form").on("submit", function (e) {
 	};
 	let id = parseInt($("#choose-game option:selected").val())
 	// If id is not equal to 0 then
-	if (id) {
+	if (id > 0) {
 		// We run a put
+		console.log("doing a put");
 		$.ajax({
 			url: `/api/games/${id}`,
 			type: 'PUT',
 			data: boardGame
 		}).then((data) => {
-			console.log(data.id)
+			console.log(data.changedRows)
+			$("#board-game-form").children().val("")
+			init()
 		}).catch((err) => {
 			throw err
 		});
 	// If id is equal to 0 then we run a post
 	} else {
+		console.log("doing a post");
 		$.post("/api/games", boardGame).then((data) => {
-			console.log(data.id);
+			$("#board-game-form").children().val("")
+			console.log(`Added a board game!`);
+			init()
 		}).catch((err) => {
 			throw err
 		});	
 	}
 })
 
-// Update a beer
-$("#update-beer").on("submit", function (e) {
+// Delete a game
+$("#del-game").on("submit", function (e) {
 	e.preventDefault()
-	const updatedBeer = {
-		beer_name: $("#chosen-beer").val().trim(),
-		brewery: $("#update-brewery").val().trim(),
-		brewery_location: $("#update-location").val().trim(),
-		abv: $("#update-abv").val().trim(),
-		price: $("#update-price").val().trim(),
-		short_description: $("#update-short").val().trim(),
-		long_description: $("#update-long").val().trim()
-	}
-	let id = $("#choose-beer option:selected").val();
-	$("#update-beer").children().val("") // Clears everything
+	let id = $("#del-game-select option:selected").val();
 	$.ajax({
-		url: `/api/beers/${id}`,
-		type: 'PUT',
-		data: updatedBeer
+		url: `/api/games/${id}`,
+		type: 'DELETE',
 	}).then((data) => {
-		console.log(data.id)
+		console.log(`Deleted game with id ${data.affectedRows}`)
+		init();
 	}).catch((err) => {
 		throw err
 	});
-});
+})
 
-
-
-
-
+// BEER FUNCTIONALITY BELOW
+// Create a new beer
 $("#add-beer").on("submit", function (e) {
 	e.preventDefault();
 	const newBeer = {
@@ -113,35 +156,38 @@ $("#add-beer").on("submit", function (e) {
 		short_description: $("#new-beer-short").val().trim(),
 		long_description: $("#new-beer-long").val().trim(),
 		abv: $("#new-abv").val().trim(),
-		price: $("#new-price").val().trim()
 	}
 	$("#add-beer").children().val("")
 	$.post("/api/beers", newBeer).then((data) => {
-		console.log("Success!")
+		console.log("Added a new beer")
+		init();
 	}).catch(err => {
 		throw err
 	})
 })
 
+// Select beer functionality
 $("#select-beer").on("submit", function (e) {
 	e.preventDefault()
 	let id = $("#choose-beer option:selected").val();
-	//  Make sure dynamically generated options have a id of the beer's id
-	$.get(`/api/beers/${id}`).then((data) => {
-		console.log(data.id);
-		$("#chosen-beer").val(data.beer_name)
-		$("#update-brewery").val(data.brewery)
-		$("#update-location").val(data.brewery_location)
-		$("#update-abv").val(data.abv)
-		$("#update-price").val(data.price)
-		$("#update-short").val(data.short_description)
-		$("#update-long").val(data.long_description)
-		$("#update-beer").attr("id", data.id)
-	}).catch(err => {
-		throw err
-	})
+	if (id > 0) {
+		//  Make sure dynamically generated options have a id of the beer's id
+		$.get(`/api/beers/${id}`).then((data) => {
+			console.log(data.id);
+			$("#chosen-beer").val(data.beer_name)
+			$("#update-brewery").val(data.brewery)
+			$("#update-location").val(data.brewery_location)
+			$("#update-abv").val(data.abv)
+			$("#update-short").val(data.short_description)
+			$("#update-long").val(data.long_description)
+		}).catch(err => {
+			throw err
+		})
+	};
+	$("#update-beer").children().val("");
 })
 
+// Update beer
 $("#update-beer").on("submit", function (e) {
 	e.preventDefault()
 	const updatedBeer = {
@@ -149,47 +195,40 @@ $("#update-beer").on("submit", function (e) {
 		brewery: $("#update-brewery").val().trim(),
 		brewery_location: $("#update-location").val().trim(),
 		abv: $("#update-abv").val().trim(),
-		price: $("#update-price").val().trim(),
 		short_description: $("#update-short").val().trim(),
 		long_description: $("#update-long").val().trim()
 	}
 	let id = $("#choose-beer option:selected").val();
-	$("#update-beer").children().val("") // Clears everything
 	$.ajax({
 		url: `/api/beers/${id}`,
 		type: 'PUT',
 		data: updatedBeer
 	}).then((data) => {
-		console.log(data.id)
+		console.log(`Updated beer with id ${data.changedRows}`)
+		$("#update-beer").children().val("") // Clears everything
+		$("#choose-beer option:selected").val(0);
+		init();
 	}).catch((err) => {
 		throw err
 	});
 });
 
-// Working
-function searchGame(title) {
-	var apiKey = 'CEx4Nnqb8e' //get rid of it
-	var queryURL = `https://www.boardgameatlas.com/api/search?name=${title}&client_id=${apiKey}`;
+// Delete a beer
+$("#del-beer").on("submit", function (e) {
+	e.preventDefault()
+	let id = $("#del-beer-select option:selected").val();
 	$.ajax({
-	url: queryURL,
-	method: "GET"
-}).then(function(response) {
-	var boardGame = parseBoardGameData(response);
-	if (boardGame === false) return $("#api-board-game").find("input").val("Couldn't find the game");
-	for (let key in boardGame) {
-		if (key === "short_description" || key === "long_description"){
-			$(`textarea[name=${key}]`).val(boardGame[key])
-			continue;
-		};
-		$(`input[name=${key}]`).val(boardGame[key]);
-	};
-}).catch(err => {
-	throw err;
-});
-};
+		url: `/api/beers/${id}`,
+		type: 'DELETE',
+	}).then((data) => {
+		console.log(`Deleted beer with id ${data.affectedRows}`)
+		init();
+	}).catch((err) => {
+		throw err
+	});
+})
 
-
-
+// SELECTOR POPULATORS BELOW
 // OnLoad we want to grab the information from our database and store in a global variable
 function init() {
 	getTableData("games", data =>	{
@@ -220,6 +259,8 @@ function getTableData(table, cb) {
 // Populate delete selectors function
 function populateDeleteSelector(row, data) {
 	row = row;
+	$(`#del-${row}-select`).empty();
+	$(`#del-${row}-select`).append($(`<option value="0">None Selected</option>`));
 	for (let item of data) {
 		// console.log(item);
 		let selectionId = item.id;
@@ -232,6 +273,8 @@ function populateDeleteSelector(row, data) {
 }
 // Populate update selectors function
 function populateUpdateSelector(row, data) {
+	$(`#choose-${row}`).empty();
+	$(`#choose-${row}`).append($(`<option value="0">None Selected</option>`));
 	for (let item of data) {
 		// console.log(item);
 		let selectionId = item.id;
@@ -243,31 +286,5 @@ function populateUpdateSelector(row, data) {
 	}
 }
 
-
-// Parses the data from the board game api call
-function parseBoardGameData(data) {
-	var game = data.games[0];
-	console.log(game);
-	if (game === undefined) return false
-	var boardGame = {
-		img_thumb: game.thumb_url,
-		img_original: game.image_url,
-		url: game.url,
-		game_name: game.name,
-		rating: parseFloat(game.average_user_rating).toFixed(2),
-		min_time: game.min_playtime,
-		max_time: game.max_playtime,
-		min_players: game.min_players,
-		max_players: game.max_players,
-		short_description: game.description_preview,
-		long_description: game.description,
-	};
-	if (game.categories.length) {
-		boardGame.categories = game.categories[0].id;
-	} else {
-		boardGame.categories = "Unknown";
-	}
-	return boardGame
-}
-
+// This initializes all of the selector fields
 init();
