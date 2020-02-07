@@ -7,10 +7,5 @@ router.route("/")
   .post(hoursController.create)
   .put(hoursController.update);
 
-// Matches with "/api/books/:id"
-router
-  .route("/:id")
-  .delete(hoursController.remove);
-
 
 module.exports = router;

@@ -26,15 +26,5 @@ module.exports = {
         }).catch((err) => {
             res.status(500).end()
         })
-    },
-
-    remove: function (req, res) {
-        db.Hours.destroy({where: {
-            id: req.params.id
-        }}).then(data => {
-            res.json(data)
-        }).catch((err) => {
-            res.status(500).end()
-        })
     }
 }

@@ -318,17 +318,35 @@ $("#update-hours").on("submit", function (e) {
 			day: day
 		}
 	}
-	// // Check this functionality with Juan before using it
-	// $.ajax({
-	// 	url: `/api/hours`,
-	// 	type: 'PUT',
-	// 	data: timeOutput
-	// }).then((data) => {
-	// 	console.log(`Time table updated`);
-	// }).catch((err) => {
-	// 	throw err
-	// });
+	// Check this functionality with Juan before using it
+	$.ajax({
+		url: `/api/hours`,
+		type: 'PUT',
+		data: timeOutput
+	}).then((data) => {
+		console.log(`Time table updated`);
+	}).catch((err) => {
+		throw err
+	});
 })
+
+function initTime() {
+	$.ajax({
+		url: `/api/hours`,
+		type: `GET`,
+	}).then((data) => {
+		if (data.length) {
+			console.log()
+		} else {
+			postDefaultTime();
+		}
+	});
+}
+
+function postDefaultTime () {
+
+}
+
 
 
 
