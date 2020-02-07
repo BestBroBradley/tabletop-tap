@@ -62,15 +62,25 @@ p.subtitle {
   background: darkolivegreen
 }
 
+.has-image-centered {
+  margin: auto;
+  text-align: center
+}
+
 #fbEvents {
   width: 100%;
 }
 
-#aboutUsDiv, #gamesDiv, #alphabetDiv {
+#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv {
   background: darkolivegreen;
   margin: 2rem;
   border: 3px solid black;
   border-radius: 2%
+}
+
+#modalDiv {
+  background: olive;
+  border: 5px solid rgb(45, 45, 167);
 }
 
 #aboutUs, #gamesText {
@@ -84,6 +94,23 @@ p.subtitle {
 
 #searchBtn {
   margin-top: 10px;
+}
+
+.modal-title {
+  font-size: 2rem
+}
+
+.modal-content {
+  width: 100%;
+}
+
+#modal-game-title {
+  text-align: center
+}
+#description {
+  width: 90%;
+  margin: auto 0;
+  text-align: center
 }
 
 .alphabet {
@@ -120,7 +147,7 @@ p.body {
   text-align: center;
 }
 
-footer {
+footer:not(#modal-foot) {
   background: #fdefd4;
   border-top: solid black 3px;
   padding-top: 9px;
