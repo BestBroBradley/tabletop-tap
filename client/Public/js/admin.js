@@ -1,3 +1,6 @@
+var categoryArr = ["123","4x","Abstract","Adventure","Age of Reason","Aliens","Alternate History","American West","Ancient","Animals","Apocalyptic","Art","Aviation","Bluffing","Campaign","Card Game","Children's Game","City Building","Civil War","Civilization","Collectible Components","Comic Book / Strip","Conversation","Cooperative","Cube Rail","Cyberpunk","Deduction","Dexterity","Dice","Dinosaurs","Drinking","Dungeons & Dragons","Economic","Educational","Electronic","Environmental","Espionage","Eurogame","Expansion","Exploration","Family Game","Fan Made","Fantasy","Farming","Fighting","Fishing","Flicking","Food","Gay","Halloween","Horror","Humor","Industry/Manufacturing","Japan","Kickstarter","Legacy","Luck","Mafia","Math","Mature / Adult","Mecha","Medical","Medieval","Memory","Miniatures","Modern Warfare","Movie Theme","Movies / TV / Radio theme","Murder/Mystery","Mythology","Napoleonic","Nautical","Negotiation","Ninja's","Ninjas","Novel-based","Party Game","Pirates","Political","Post-Apocalyptic","Post-Napoleonic","Prehistoric","Print & Play","Prison Escape","Puzzle","Queer","RPG","Racing","Real-time","Religious","Renaissance","Resource Management","Roman Empire","Romance","Sci-Fi","Socialite","Solo / Solitaire","Space Exploration","Spies/Secret Agents","Sports","Strategy","Superhero","Tech","Territory Building","Theme Park","Trains","Transportation","Travel","Trivia","Vampire","Video Game Theme","War","Wargame","Werewolves","Western","Word Game","World War I","World War II","World War III","Zombies"];
+var categoryIdArr = ["WnxKtlGfdR", "85OKv8p5Ow", "hBqZ3Ar4RJ", "KUBCKBkGxV", "20iDvpbh7A", "tJxatX2ZbW", 	"nWDac9tQzt", "4mOtRRwSoj", "a8NM5cugJX", "MWoxgHrOJD", "eFaACC6y2c", "k0dglq5j6N", "QB4sEpx1Uu", "PinhJrhnxU", 	"fW5vusE96B", "eX8uuNlQkQ", "HKaYVNIxAJ", "ODWOjWAJj3", "w8XD66FUZ2", "329DxyFL9D", "vXxLT0FDTZ", "G5kfqnPBP6", 	"iTvYWFmD1c", "ge8pIhEUGE", "nfQONtMbDU", "Ef4oYLHNhI", "bCBXJy9qDw", "bKrxqD9mYc", "mavSOM8vjH", "UuxiExraPF", 	"We3MM46qBr", "ZEW7DPFAE6", "N0TkEGfEsF", "B3NRLMK4xD", "crxgUzJSEz", "gsekjrPJz0", "u5ZiYctU6T", "h8wfZG0j3I", 	"v4SfYtS2Lr", "yq6hVlbM2R", "7rV11PKqME", "ctumBZyj5l", "ZTneo8TaIO", "Wr8uXcoR9p", "upXZ8vNfNO", "zNxFBqBHXA", 	"3NDxCLUny4", "YrDuNj8lvr", "H9Ef643lYf", "NR0vgCx5R7", "cAIkk5aLdQ", "TYnxiuiI3X", "zqFmdU4Fp2", "R7PTH00PmO", "rrvd68LjOR", "XeYUw9159M", "nHZiDOXNla", "pIMmuVYnQp", "POlqwScVxD", "ZhlfIPxYsw", "c1AnMUJrTF", "AeWXMxbm91", "QAYkTHK1Dd", "AujCle9cUq", "FC6ElKI9tk", "L6NUwNdblq", "TJnR5obHsQ", "Sod2YBWMKi", "Kk70K0524Z", "MHkqIVxwtx", "IpcJzp0TVC", "vqZ5XzGWQD", "jZEDOpx07e", "mWb5kHTAg1", "rtslXnT90O", "dO9HVl2TW7", "X8J7RM6dxX", "9EIayX6n5a", "TKQncFVX74", "8Z7nWG2kOw", "5APB1MWk6X", "YyszHun1HP", "ov6sEmlkiC", "dAyk5NtNTV", "WVMOS3s2pb", "c6nnwyDdnl", "2Gu62aKdma", "tQGLgwdbYH", "PzWI2uaif0", "DRqeVkXWqX", "nuHYRFmMjU", "zyj9ZK3mHB", "KSBdPfxs6F", "E5rYwP0Ybr", "3B3QpKvXD3", "c6ei4hkUxm", "VzyslQJGrG", "0MdRqhkNpw", "Hc6vcim5DS", "hShsL2DktG","O0ogzwLUe8","usFW8szGAq","yHTeXNjln0","buDTYyPw4D","vCzpbYT7RU","JwHcKqxh33","CWYOF9xu7O","TR4CiP8Huj","YGHGDjahKY","CH0R8pZsem","djokexoK0U","ssZjU3HETz","jX8asGGR6o","uJgSEPT6zE","EHUBCITA3t","rHvAx4hH2f","wTLJSVEbm6","fl3TogdUzX","OlkGBmu4Va","FmGV9rVu1c"];
+var apiKey = 'CEx4Nnqb8e' //get rid of it
 // GAME FUNCTIONALITY BELOW
 // Search board game api and populate field
 $("#api-board-game").on("submit", function (e) {
@@ -9,7 +12,6 @@ $("#api-board-game").on("submit", function (e) {
 
 // API call to boardgame and form population
 function searchGame(title) {
-	var apiKey = 'CEx4Nnqb8e' //get rid of it
 	var queryURL = `https://www.boardgameatlas.com/api/search?name=${title}&client_id=${apiKey}`;
 	$.ajax({
 	url: queryURL,
@@ -47,7 +49,12 @@ function parseBoardGameData(data) {
 		long_description: game.description,
 	};
 	if (game.categories.length) {
-		boardGame.categories = game.categories[0].id;
+		let indexCategory = categoryIdArr.indexOf(game.categories[0].id)
+		if(indexCategory > -1) {
+			boardGame.categories = categoryArr[indexCategory];
+		} else {
+			boardGame.categories = "Unknown";
+		}
 	} else {
 		boardGame.categories = "Unknown";
 	}
@@ -322,3 +329,45 @@ $("#update-hours").on("submit", function (e) {
 	// 	throw err
 	// });
 })
+
+
+
+//! Antiquated code
+// console.log("here is the initDataBase return")
+// initDataBase((arrs) => {
+// 	console.log("here's the arrs");
+// 	console.log(arrs);
+// });
+
+// function createArr(Arr, key) {
+// 	let array = [];
+// 	for (let item of Arr) {
+// 		array.push(item[key]);
+// 	}
+// 	return array
+// }
+
+// function initDataBase (cb) {
+// 	var queryURL = `https://www.boardgameatlas.com/api/game/categories?client_id=${apiKey}`;
+// 	$.ajax({
+// 		url: queryURL,
+// 		method: "GET"
+// 	}).then(function(response) {
+// 		// console.log(response)
+// 		console.log(response.categories)
+// 		let idArr = createArr(response.categories, "id");
+// 		let nameArr = createArr(response.categories, "name");
+// 		return cb([idArr, nameArr]);
+// 		// var boardGame = parseBoardGameData(response);
+// 		// if (boardGame === false) return $("#api-board-game").find("input").val("Couldn't find the game");
+// 		// for (let key in boardGame) {
+// 		// 	if (key === "short_description" || key === "long_description"){
+// 		// 		$(`textarea[name=${key}]`).val(boardGame[key])
+// 		// 		continue;
+// 		// 	};
+// 		// 	$(`input[name=${key}]`).val(boardGame[key]);
+// 		// };
+// 	}).catch(err => {
+// 		throw err;
+// 	});
+// }
