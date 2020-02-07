@@ -75,7 +75,22 @@ p.subtitle {
   width: 100%;
 }
 
-#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv {
+.beerName {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem
+}
+
+.beerPop {
+  margin: 20px;
+  color: #fdefd4
+}
+
+.link {
+  color: darkslategrey;
+  font-size: 1.5rem
+}
+
+#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv {
   background: darkolivegreen;
   margin: 2rem;
   border: 3px solid black;

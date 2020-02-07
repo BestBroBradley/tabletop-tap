@@ -1,1 +1,63 @@
-p BEERS
+div(id="beersDiv" class="columns is-vcentered is-mobile is-multiline is-centered")
+  div(class="column is-three-quarters-mobile is-one-fourth-desktop")
+    img(src="/images/taps_2.jpg" alt="pic of beer taps") 
+  div(class="column is-three-quarters-mobile is-one-fourth-desktop")
+    p(class="searchText has-text-centered") We scour the globe for the best craft brews money can buy, and have an ever-changing tap list.  Check back often for new offerings!
+  div(class="column is-three-quarters-mobile is-one-fourth-desktop")
+    img(src="/images/taps_1.jpg" alt="pic of beer taps")
+
+div(class="modal")
+  div.modal-background
+  div.modal-card
+    header.modal-card-head
+      p(class="modal-card-title modal-title" id="modal-beer-title") Firestarter American IPA
+      button(class="delete" aria-label="close")
+    section.modal-card-body
+      div(id="modalDiv" class="columns is-vcentered is-mobile is-multiline is-centered")
+        div(class="column is-one-third-desktop is-full-mobile")
+          div(class="has-image-centered")
+            img(src="/images/taps_port.jpg")
+        div(class="column is-two-thirds-desktop is-full-mobile")
+          p.modal-content ABV: 6.6%
+          p.modal-content Brewery: Bonfire Brewing - Eagle, CO
+          p.modal-content Description:
+          div(class="modal-content")
+            p(class="modal-content" id="description") A nice citrusy IPA with tropical notes and a mildly toasty malt background.
+    footer(class="modal-card-foot" id="modal-foot")
+
+div(id="fullBeerList" class="columns is-mobile is-multiline is-centered")
+  div(class="beerPop column is-four-fifths-mobile is-four-fifths-tablet is-half-desktop")
+    p(class="beerName") Firestarter American IPA
+    span(class="beerABV") 6.6%  |
+    span(class="beerDescription") |  Bonfire Brewing - Eagle, CO
+    div
+      a(class="link view-more") More info
+    hr
+  div(class="beerPop column is-four-fifths-mobile is-four-fifths-tablet is-half-desktop")
+    p(class="beerName") Firestarter American IPA
+    span(class="beerABV") 6.6%  |
+    span(class="beerDescription") |  Bonfire Brewing - Eagle, CO
+    div
+      a(class="link view-more") More info
+    hr
+  div(class="beerPop column is-four-fifths-mobile is-four-fifths-tablet is-half-desktop")
+    p(class="beerName") Firestarter American IPA
+    span(class="beerABV") 6.6%  |
+    span(class="beerDescription") |  Bonfire Brewing - Eagle, CO
+    div
+      a(class="link view-more") More info
+    hr
+  div(class="beerPop column is-four-fifths-mobile is-four-fifths-tablet is-half-desktop")
+    p(class="beerName") Firestarter American IPA
+    span(class="beerABV") 6.6%  |
+    span(class="beerDescription") |  Bonfire Brewing - Eagle, CO
+    div
+      a(class="link view-more") More info
+    hr
+  div(class="beerPop column is-four-fifths-mobile is-four-fifths-tablet is-half-desktop")
+    p(class="beerName") Firestarter American IPA
+    span(class="beerABV") 6.6%  |
+    span(class="beerDescription") |  Bonfire Brewing - Eagle, CO
+    div
+      a(class="link view-more") More info
+    hr
