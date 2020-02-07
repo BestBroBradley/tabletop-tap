@@ -28,7 +28,7 @@ app.use(routes)
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
 
   // db.Users.create({
   //   login:"test",

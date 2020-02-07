@@ -4,7 +4,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
   script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
-  title= pageTitle
+  title Welcome Page
   style.
     * {
     font-family: sans-serif
@@ -32,46 +32,38 @@ head
     text-align: center;
     padding: 20px;
     }
-
-
-h1 Welcome to your new website
-h2  Here you will create your master account to interact with your site
+    /* {
+    bottom: 0;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    background: #999;
+    } */
+h1 Welcome Back
+h2  Admins Login
 .container
   form#admin
     h3 Login
     input#login(name='login' required='')
     h3 Password:
     input#userPassword(name='password' type='password' required='')
-    h3 Re-enter Password
-    input#userPasswordChecker(type='password' required='')
-    h3 Email (for Password recovery)
-    input#email(type='email' name='email' required='')
     br
     br
     input#submitBtn(type='submit' value='ENTER')
 script(type='text/javascript' src='../js/admin.js')
 script(language='javascript' type='text/javascript').
-  
   $("#admin").on("submit", function (evt) {
   evt.preventDefault()
-  if ($("#userPassword").val().trim() === $("#userPasswordChecker").val().trim()) {
-  const newAdmin = {
+  const admin = {
   login: $("#login").val().trim(),
-  password: $("#userPassword").val().trim(),
-  email: $("#email").val().trim(),
-  tier: "TOPADMIN"
+  password: $("#userPassword").val().trim()
   };
-  $.post("/api/permissions/", newAdmin)
-  // on success, run this callback
-  .then(()=>{
-  
-  $.post("/api/permissions/login", newAdmin).then((data)=>{
+  $.post("/api/permissions/login", admin).then((data)=>{
     location.reload()
   })
+  // on success, run this callback
+  
+  // log the data we found
 
-  
   // tell the user we're adding a character with an alert window
-  
   });
-  } else alert("passwords don't match");
-  })

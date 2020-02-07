@@ -33,15 +33,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         abv: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(4,2),
             allowNull: false,
             validate: {
-                len: [1, 4]
+                max:99.99
             }
-        },
-        price: {
-            type: DataTypes.DECIMAL,
-            allowNull: true
         }
     })
     return Beers

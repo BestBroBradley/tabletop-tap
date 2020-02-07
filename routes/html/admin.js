@@ -1,19 +1,33 @@
 const path = require("path");
 const router = require("express").Router();
-const isAuthenticated = require("../../config/Middleware/isAuthenticated");
+const db = require("../../models");
+isAuthenticated = require("../../config/Middleware/isAuthenticated")
 
-router.get('/', function (req, res) { 
-  res.render("admin", {pageTitle: "Admin",user:req.user, youAreUsingPug: true})
+router.get('/signup', function (req, res) {
+
+  db.Users.findAll().then(data => {
+    if (data == false) {
+      return res.render("adminSignUp", {
+        pageTitle: "Admin Sign Up", youAreUsingPug: true
+      })
+    } 
+      res.status(403).redirect('/html/admin/');
+  })
 })
 
-router.get('/signup', function (req, res) { 
-  res.render("adminSignUp", {
-    pageTitle: "Admin Sign Up", youAreUsingPug: true
-  })
+router.get('/',isAuthenticated, function (req, res) {
+  res.render("admin", { pageTitle: "Admin", youAreUsingPug: true })
+})
+
+router.get('/login', function (req, res) {
+  
+  res.render("login", { pageTitle: "login", youAreUsingPug: true })
 })
 
 module.exports = router;
 
 
 // Don't forget to inject the filename in the pug file
-// .post(isAuthenticated,permissionsController.create)
+// .catch(()=>{
+  
+// })
