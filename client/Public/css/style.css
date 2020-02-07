@@ -62,9 +62,13 @@ p.subtitle {
   background: darkolivegreen
 }
 
+#view-text {
+  color: #4a4a4a
+}
+
 .has-image-centered {
   margin: auto;
-  text-align: center
+  text-align: center;
 }
 
 #fbEvents {
@@ -78,9 +82,24 @@ p.subtitle {
   border-radius: 2%
 }
 
+.modal-background {
+  background: darkslategrey;
+  opacity: .8
+}
+
+.modal-card-body {
+  background: darkkhaki;
+  border: 2px solid rgb(45, 45, 167);
+}
+
 #modalDiv {
   background: olive;
+  padding: 0;
   border: 5px solid rgb(45, 45, 167);
+}
+
+.delete {
+
 }
 
 #aboutUs, #gamesText {
@@ -97,7 +116,8 @@ p.subtitle {
 }
 
 .modal-title {
-  font-size: 2rem
+  font-size: 2rem;
+  color: #4a4a4a
 }
 
 .modal-content {

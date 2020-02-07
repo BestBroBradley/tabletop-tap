@@ -21,7 +21,7 @@ div(class="modal")
   div.modal-background
   div.modal-card
     header.modal-card-head
-      p.modal-card-title
+      p(class="modal-card-title modal-title" id="modal-game-title") Pandemic
       button(class="delete" aria-label="close")
     section.modal-card-body
       div(id="modalDiv" class="columns is-vcentered is-mobile is-multiline is-centered")
@@ -29,7 +29,6 @@ div(class="modal")
           div(class="has-image-centered")
             img(src="http://placekitten.com/200/300")
         div(class="column is-two-thirds-desktop is-full-mobile")
-          p(class="modal-title" id="modal-game-title") Pandemic
           p.modal-content Category: cooperative
           p.modal-content Rating: 2.5/5
           p.modal-content Players: 2-5
@@ -38,7 +37,7 @@ div(class="modal")
           div(class="modal-content")
             p(class="modal-content" id="description") Text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text
           a(href="#")
-            p.has-text-centered Click to visit game page
+            p(class="has-text-centered" id="view-text") Click to visit game page
     footer(class="modal-card-foot" id="modal-foot")
     
 div(class="columns is-mobile is-multiline is-centered")
@@ -78,7 +77,7 @@ div(id="searchResults" class="columns is-mobile is-multiline is-centered")
     p Time commitment: 30-60 mins
     p Category: Cooperative
     div.has-text-centered
-      a(class="view-more" href="#") More info
+      a(class="view-more") More info
   div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
     p Name: Pandemic
     p Player count: 2-5
