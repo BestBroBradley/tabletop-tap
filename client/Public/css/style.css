@@ -101,6 +101,11 @@ p.subtitle {
   border-radius: 2%
 }
 
+#welcomeNote {
+  font-size: 1.5rem;
+  font-family: 'Racing Sans One', cursive;
+}
+
 .contactDiv {
   width: 90%;
   margin: auto
@@ -180,8 +185,12 @@ p.head {
 }
 p.body {
   text-indent: 1rem;
-  font-size: 0.5rem;
+  font-size: .75rem;
   color: whitesmoke;
+}
+
+p.intro {
+  text-align: center;
 }
 
 #carousel {
