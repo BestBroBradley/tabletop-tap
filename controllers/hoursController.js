@@ -1,4 +1,5 @@
-const db = require("../models")
+const db = require("../models");
+const toNum = require("./tools");
 
 module.exports = {
     findAll: function (req, res) {
@@ -9,7 +10,9 @@ module.exports = {
         })
     },
     create: function (req, res) {
-        db.Hours.create(req.body).then(data => {
+        var newDay = toNum(req.body);
+        newDay.closed_day = newDay.closed_day;
+        db.Hours.create(newDay).then(data => {
             res.json(data)
         }).catch((err) => {
             res.status(500).end()
@@ -17,21 +20,14 @@ module.exports = {
     },
 
     update: function (req, res) {
-        db.Hours.update(req.body, {
+        var newDay = toNum(req.body);
+        newDay.closed_day = newDay.closed_day;
+        
+        db.Hours.update(newDay, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(data => {
-            res.json(data)
-        }).catch((err) => {
-            res.status(500).end()
-        })
-    },
-
-    remove: function (req, res) {
-        db.Hours.destroy({where: {
-            id: req.params.id
-        }}).then(data => {
             res.json(data)
         }).catch((err) => {
             res.status(500).end()

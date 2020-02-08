@@ -39,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         closed_day:{
             type: DataTypes.BOOLEAN,
-            defaultVAlue:false,
+            defaultValue:false,
             allowNull:false
         }
     })

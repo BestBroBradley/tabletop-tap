@@ -15,7 +15,7 @@ router.get('/signup', function (req, res) {
   })
 })
 
-router.get('/',isAuthenticated, function (req, res) {
+router.get('/', function (req, res) { //,isAuthenticated
   res.render("admin", { pageTitle: "Admin", youAreUsingPug: true })
 })
 
