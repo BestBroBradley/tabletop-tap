@@ -36,6 +36,9 @@ db.sequelize.sync({ force: true }).then(function() {
   //   email:"test@gmail.com",
   //   tier:"ADMIN"
   // });
+
+  // app.get("api/admin/login",{login:"test",
+  // password:"Password1",})
   // db.Users.create({
   //   login:"test2",
   //   password:"Password1",
