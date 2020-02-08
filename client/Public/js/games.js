@@ -3,8 +3,7 @@ $(document).ready(function() {$(".view-more, .delete").on("click", function(e) {
   console.log('clicked')
   $(".modal").toggle()
 })
-                              
-                              
+
 $("#searchGames").on("submit", function (evt) {
   evt.preventDefault()
   $.get("/api/games/search/" + $("#query").val().trim(), function (data) {

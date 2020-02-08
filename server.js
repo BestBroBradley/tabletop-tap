@@ -30,12 +30,12 @@ app.set("views", "./views");
 
 db.sequelize.sync({ force: true }).then(function() {
 
-  // db.Users.create({
-  //   login:"test",
-  //   password:"Password1",
-  //   email:"test@gmail.com",
-  //   tier:"ADMIN"
-  // });
+  db.Users.create({
+    login:"test",
+    password:"Password1",
+    email:"test@gmail.com",
+    tier:"ADMIN"
+  });
 
   // app.get("api/admin/login",{login:"test",
   // password:"Password1",})
