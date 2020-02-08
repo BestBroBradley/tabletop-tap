@@ -53,7 +53,7 @@ p.subtitle {
   margin: 1rem 1rem; */
 }
 
-#eventsDiv, #eventsDiv2 {
+.eventsDiv {
   padding: 2rem;
   border: 3px solid black;
   margin: auto;
@@ -94,7 +94,7 @@ p.subtitle {
   font-size: 1.5rem
 }
 
-#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv, .contactDiv {
+#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv, .contactDiv, #welcomeDiv {
   background: darkolivegreen;
   margin: 2rem;
   border: 3px solid black;
@@ -104,6 +104,10 @@ p.subtitle {
 .contactDiv {
   width: 90%;
   margin: auto
+}
+
+#contact-title {
+  font-size: 1.5rem
 }
 .modal-background {
   background: darkslategrey;
