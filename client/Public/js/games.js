@@ -1,22 +1,10 @@
 
-// $(".alphabet").on("click",function(evt){
-//   evt.preventDefault()
-//   console.log();
-
-
-//   $.get("/html/games/"+$(this).data("index").tolowerCase(),function(){
-// $.get("/api/games/search/" + $("#query").val().trim(), function (data) {
-//   // console.log(data)
-//   return console.log(data)
-// }).catch(err => {
-//   throw err;
-// });
-//   })
-// })
-
-
-
-
+$(document).ready(function() {$(".view-more, .delete").on("click", function(e) {
+  console.log('clicked')
+  $(".modal").toggle()
+})
+                              
+                              
 $("#searchGames").on("submit", function (evt) {
   evt.preventDefault()
   $.get("/api/games/search/" + $("#query").val().trim(), function (data) {
@@ -31,15 +19,4 @@ $("#searchGames").on("submit", function (evt) {
     throw err;
   });
 })
-
-//   router.get("/search/:query",gamesController.findByLetter);
-// module.exports = router;
-
-
-// $.ajax({
-//   path:"/api/games/search/"+$("#query").val().trim(),
-//   method:"get"
-// }).then(data=>{
-//   $.ajax({
-//     route:
-//   })
+})
