@@ -66,7 +66,7 @@ module.exports = function (sequelize, DataTypes) {
                 }
             }
         },
-        categories: {
+        category: {
             type: DataTypes.STRING,
             allowNull: true
         }

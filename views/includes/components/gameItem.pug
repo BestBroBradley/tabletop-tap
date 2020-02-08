@@ -1,0 +1,20 @@
+
+if game.min_time & game.max_time
+  -var pTime = `${game.min_time} - ${game.max_time} mins`
+else
+  -var pTime = `${game.min_time} mins`
+
+if game.min_players & game.max_players
+  -var pCount = `${game.min_players} - ${game.max_players} players`
+else
+  -var pCount = `${game.min_players} players`
+
+div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
+  p Name: #{game.game_name}
+  p Player count: #{pCount}
+  p Time commitment: #{pTime}
+  p Category: #{game.category}
+  .has-text-centered
+    a#view-more More info
+
+
