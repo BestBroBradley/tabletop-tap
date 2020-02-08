@@ -363,10 +363,15 @@ h1 Admin Page
     h2 Add employee to permissions:
     p Username:
     input#login
+    //- Who's password is supposed to be entered in here? The new user or the admin?
     p Password:
     input#password
     p Email:
     input#email
+    p Tier:
+    input#tier
+    br
+    hr
     button Submit
 .container
   form#del-login
@@ -374,5 +379,7 @@ h1 Admin Page
     p Username:
     select#del-login-select
       option#0 None Selected
-    button DELETE
+    br
+    hr
+    button Submit
 script(type='text/javascript' src='/js/admin.js')

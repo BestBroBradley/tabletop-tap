@@ -7,5 +7,7 @@ router.route("/")
   .post(hoursController.create)
   .put(hoursController.update);
 
+router.route("/:id")
+  .put(hoursController.update)
 
 module.exports = router;

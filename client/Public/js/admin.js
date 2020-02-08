@@ -293,61 +293,124 @@ function populateUpdateSelector(row, data) {
 	}
 }
 
-
 // TIME FUNCTIONALITY
-$("#update-hours").on("submit", function (e) {
-	e.preventDefault();
-	var days = ["mon", "tues", "weds", "thurs", "fri", "sat", "sun"];
-	var timeOutput = {};
-	for (let day of days) {
-		let closed = $(`input[name=${day}]:checked`).val();
-		if (closed === "closed") {
-			var open = "closed";
-			var close = "closed";
-			closed = true;
-		} else {
-			closed = false; 
-			var open = $(`select[name=${day}-open] option:selected`).val();
-			var close = $(`select[name=${day}-close] option:selected`).val();
-			// need to modulus by 24 if greater than 24 to get the proper hour
-		}
-		timeOutput[day] = {
-			closed_day,
-			open_time,
-			close_time,
-			day: day
-		}
-	}
-	// Check this functionality with Juan before using it
-	$.ajax({
-		url: `/api/hours`,
-		type: 'PUT',
-		data: timeOutput
-	}).then((data) => {
-		console.log(`Time table updated`);
-	}).catch((err) => {
-		throw err
-	});
-})
-
+// Put functionality
 function initTime() {
 	$.ajax({
 		url: `/api/hours`,
 		type: `GET`,
 	}).then((data) => {
 		if (data.length) {
-			console.log()
+			console.log("We have days in our database")
 		} else {
 			postDefaultTime();
 		}
 	});
 }
 
-function postDefaultTime () {
+$("#update-hours").on("submit", function (e) {
+	e.preventDefault();
+	var timeOutput = gatherFormData();
+	// Check this functionality with Juan before using it
+	for (let day in timeOutput) {
+		$.ajax({
+			url: `/api/hours/${timeOutput[day]["id"]}`,
+			type: 'PUT',
+			data: timeOutput[day]
+		}).then((data) => {
+			console.log(`Time table updated`);
+		}).catch((err) => {
+			throw err
+		});
+	}
+})
 
+function gatherFormData () {
+	var days = ["mon", "tues", "weds", "thurs", "fri", "sat", "sun"];
+	var timeOutput = {};
+	for (let day of days) {
+		let closed = $(`input[name=${day}]:checked`).val();
+		let id = parseInt(days.indexOf(day)) + 1;
+		if (closed === "closed") {
+			var open = 0.01;
+			var close = 1.01;
+			var closed_day = true;
+		} else {
+			var open = $(`select[name=${day}-open] option:selected`).val();
+			var close = $(`select[name=${day}-close] option:selected`).val();
+			var closed_day = false; 
+			// need to modulus by 24 if greater than 24 to get the proper hour
+		}
+		timeOutput[day] = {
+			closed_day,
+			open_time: open,
+			close_time: close,
+			day: day,
+			id
+		}
+	}
+	return timeOutput
 }
 
+function postDefaultTime () {
+	var timeOutput = gatherFormData();
+	for (let day in timeOutput) {
+		$.post({
+			url: "/api/hours",
+			data: timeOutput[day]
+		}).then(response => {
+			console.log(`Added ${day}`)
+		}).catch((err) => {
+			throw err;
+		});
+	}
+}
 
+init();
+initTime();
+
+$("#add-employee").on("submit", function (e) {
+	e.preventDefault();
+	let login = $("#login").val().trim();
+	let password = $("#password").val().trim();
+	let email = $("#email").val().trim();
+	let tier = $("#tier").val().trim();
+	let user = { login, password, email, tier };
+	$.ajax({
+		url: "/api/permissions",
+		data: user,
+		method: "POST"
+	}).then(response => {
+		console.log(`Added user`)
+		$("#add-employee").children().val("");
+		init();
+	}).catch((err) => {
+		throw err;
+	})
+})
+
+$("#del-login").on("submit", function(e) {
+	e.preventDefault();
+	let id = $("#del-login-select option:selected").val();
+	$.ajax({
+		url: `/api/permissions/${id}`,
+		method: "DELETE"
+	}).then(response => {
+		console.log(response);
+		init();
+		$("#del-login").children().val("");
+	}).catch(err => {
+		throw err;
+	})
+})
+// Admin functionality
+// .container
+//   form#del-login
+//     h2 Remove employee from permissions:
+//     p Username:
+//     select#del-login-select
+//       option#0 None Selected
+//     button DELETE
 
 
 //! Antiquated code
