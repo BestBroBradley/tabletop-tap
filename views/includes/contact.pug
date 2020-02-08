@@ -1,0 +1,20 @@
+div(class="columns is-mobile is-multiline is-centered") 
+  div(class="column ff7Box is-three-quarters-mobile is-half-tablet is-one-third-desktop" id="contact")
+    p.contact-head Contact Us
+    p.contact-body#phone (720) 287-0155
+    p.contact-body#email tabletoptap@gmail.com
+    p.contact-body#facebook FB: tabletoptap
+    p.contact-body#instagram Instagram: thetabletoptap
+
+  div(class="contactDiv column is-three-quarters-mobile is-two-thirds-desktop is-two-thirds-tablet")
+    p#contact-title Send us an email!
+    form(action="submit")
+    p Your name:
+    input(class="input")
+    p Your email:
+    input(class="input")
+    p Your phone number (optional):
+    input(class="input")
+    p Message:
+    textarea(name="message", cols="30", rows="10" class="textarea")
+    button(id="emailBtn" type="submit" class="button is-link is-rounded") Send
