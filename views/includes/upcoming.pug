@@ -4,5 +4,8 @@ div(class="columns is-centered is-mobile")
 div(id="fb-root")
 script(async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0")
 
-div(id="eventsDiv" class="is-centered")
+div(id="eventsDiv" class="is-centered is-hidden-mobile")
   div(id="fbEvents" class="fb-page" data-tabs="events,timeline" data-href="https://www.facebook.com/tabletoptap" data-width="500" data-hide-cover="false")
+
+div(id="eventsDiv2" class="is-centered is-hidden-tablet is-hidden-desktop")
+  div(id="fbEvents" class="fb-page" data-tabs="events,timeline" data-href="https://www.facebook.com/tabletoptap" data-width="300" data-hide-cover="false")
