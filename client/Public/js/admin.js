@@ -235,49 +235,6 @@ $("#del-beer").on("submit", function (e) {
 	});
 })
 
-// SELECTOR POPULATORS BELOW
-// OnLoad we want to grab the information from our database and store in a global variable
-function init() {
-	getTableData("games", data =>	{
-		populateDeleteSelector("game", data);
-		populateUpdateSelector("game", data);
-	});
-	getTableData("beers", data =>	{
-		populateDeleteSelector("beer", data);
-		populateUpdateSelector("beer", data);
-	});
-	// Functionality currently not added
-	getTableData("permissions", data =>	{
-		// console.log(data);
-		populateDeleteSelector("login", data);
-		populateUpdateSelector("login", data);
-	});
-
-}
-// Gets the table data //permission
-function getTableData(table, cb) {
-	$.get(`/api/${table}`, function(data) {
-		// console.log(data)
-		return cb(data)
-	}).catch(err => {
-		throw err;
-	});
-}
-// Populate delete selectors function
-function populateDeleteSelector(row, data) {
-	row = row;
-	$(`#del-${row}-select`).empty();
-	$(`#del-${row}-select`).append($(`<option value="0">None Selected</option>`));
-	for (let item of data) {
-		// console.log(item);
-		let selectionId = item.id;
-		let selectionName = item[`${row}_name`];
-		if (row === "login") {
-			selectionName = item[row];
-		};
-		$(`#del-${row}-select`).append($(`<option value="${selectionId}">${selectionName}</option>`));
-	}
-}
 // Populate update selectors function
 function populateUpdateSelector(row, data) {
 	$(`#choose-${row}`).empty();
@@ -367,9 +324,8 @@ function postDefaultTime () {
 	}
 }
 
-init();
-initTime();
-
+// EMPLOYEE FUNCTIONALITY
+// Add functionality
 $("#add-employee").on("submit", function (e) {
 	e.preventDefault();
 	let login = $("#login").val().trim();
@@ -389,7 +345,7 @@ $("#add-employee").on("submit", function (e) {
 		throw err;
 	})
 })
-
+// Remove functionality
 $("#del-login").on("submit", function(e) {
 	e.preventDefault();
 	let id = $("#del-login-select option:selected").val();
@@ -404,52 +360,52 @@ $("#del-login").on("submit", function(e) {
 		throw err;
 	})
 })
-// Admin functionality
-// .container
-//   form#del-login
-//     h2 Remove employee from permissions:
-//     p Username:
-//     select#del-login-select
-//       option#0 None Selected
-//     button DELETE
+// Currently no update functionality
 
 
-//! Antiquated code
-// console.log("here is the initDataBase return")
-// initDataBase((arrs) => {
-// 	console.log("here's the arrs");
-// 	console.log(arrs);
-// });
+// Runs our initialize functions
+init();
+initTime();
 
-// function createArr(Arr, key) {
-// 	let array = [];
-// 	for (let item of Arr) {
-// 		array.push(item[key]);
-// 	}
-// 	return array
-// }
-
-// function initDataBase (cb) {
-// 	var queryURL = `https://www.boardgameatlas.com/api/game/categories?client_id=${apiKey}`;
-// 	$.ajax({
-// 		url: queryURL,
-// 		method: "GET"
-// 	}).then(function(response) {
-// 		// console.log(response)
-// 		console.log(response.categories)
-// 		let idArr = createArr(response.categories, "id");
-// 		let nameArr = createArr(response.categories, "name");
-// 		return cb([idArr, nameArr]);
-// 		// var boardGame = parseBoardGameData(response);
-// 		// if (boardGame === false) return $("#api-board-game").find("input").val("Couldn't find the game");
-// 		// for (let key in boardGame) {
-// 		// 	if (key === "short_description" || key === "long_description"){
-// 		// 		$(`textarea[name=${key}]`).val(boardGame[key])
-// 		// 		continue;
-// 		// 	};
-// 		// 	$(`input[name=${key}]`).val(boardGame[key]);
-// 		// };
-// 	}).catch(err => {
-// 		throw err;
-// 	});
-// }
+// SELECTOR POPULATORS BELOW
+// OnLoad we want to grab the information from our database and store in a global variable
+function init() {
+	getTableData("games", data =>	{
+		populateDeleteSelector("game", data);
+		populateUpdateSelector("game", data);
+	});
+	getTableData("beers", data =>	{
+		populateDeleteSelector("beer", data);
+		populateUpdateSelector("beer", data);
+	});
+	// Functionality currently not added
+	getTableData("permissions", data =>	{
+		// console.log(data);
+		populateDeleteSelector("login", data);
+		populateUpdateSelector("login", data);
+	});
+}
+// Gets the table data //permission
+function getTableData(table, cb) {
+	$.get(`/api/${table}`, function(data) {
+		// console.log(data)
+		return cb(data)
+	}).catch(err => {
+		throw err;
+	});
+}
+// Populate delete selectors function
+function populateDeleteSelector(row, data) {
+	row = row;
+	$(`#del-${row}-select`).empty();
+	$(`#del-${row}-select`).append($(`<option value="0">None Selected</option>`));
+	for (let item of data) {
+		// console.log(item);
+		let selectionId = item.id;
+		let selectionName = item[`${row}_name`];
+		if (row === "login") {
+			selectionName = item[row];
+		};
+		$(`#del-${row}-select`).append($(`<option value="${selectionId}">${selectionName}</option>`));
+	}
+}
