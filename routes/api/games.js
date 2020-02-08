@@ -13,7 +13,10 @@ router.route("/:id")
   .put(gamesController.update)
   .delete(gamesController.remove);
 
-  router.get("/search/:query",gamesController.findByLetter);
+// Matches with "/api/books/search/:query"
+router.get("/search/:query", gamesController.findByLetter);
+
+
 module.exports = router;
 
 

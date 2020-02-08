@@ -11,7 +11,7 @@ module.exports = {
     },
     create: function (req, res) {
         var newDay = toNum(req.body);
-        newDay.closed_day = Boolean(newDay.closed_day);
+        newDay.closed_day = newDay.closed_day;
         db.Hours.create(newDay).then(data => {
             res.json(data)
         }).catch((err) => {
@@ -21,7 +21,7 @@ module.exports = {
 
     update: function (req, res) {
         var newDay = toNum(req.body);
-        newDay.closed_day = Boolean(newDay.closed_day);
+        newDay.closed_day = newDay.closed_day;
         
         db.Hours.update(newDay, {
             where: {
