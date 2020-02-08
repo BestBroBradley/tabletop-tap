@@ -51,7 +51,9 @@ module.exports = {
         }).catch(() => {
             res.status(404).end()
         })
-    },findByLetter: function(req,res){
+    },
+    // This is the html boardgame functionality
+    findByLetter: function(req,res){
         const query = req.params.query;
         console.log(query)
         db.Games.findAll({

@@ -19,10 +19,6 @@ app.use(passport.session());
 
 app.use(express.static("client/public"));
 
-app.get("/admin", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/Public/includes/admin.html"))
-})
-
 app.use(routes)
 
 app.set("view engine", "pug");

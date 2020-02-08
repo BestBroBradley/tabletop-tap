@@ -285,17 +285,18 @@ $("#update-hours").on("submit", function (e) {
 function gatherFormData () {
 	var days = ["mon", "tues", "weds", "thurs", "fri", "sat", "sun"];
 	var timeOutput = {};
+	var closed_day;
 	for (let day of days) {
 		let closed = $(`input[name=${day}]:checked`).val();
 		let id = parseInt(days.indexOf(day)) + 1;
 		if (closed === "closed") {
 			var open = 0.01;
 			var close = 1.01;
-			var closed_day = true;
+			closed_day = true;
 		} else {
 			var open = $(`select[name=${day}-open] option:selected`).val();
 			var close = $(`select[name=${day}-close] option:selected`).val();
-			var closed_day = false; 
+			closed_day = false; 
 			// need to modulus by 24 if greater than 24 to get the proper hour
 		}
 		timeOutput[day] = {
