@@ -90,7 +90,11 @@ p.subtitle {
   font-size: 1.5rem
 }
 
-#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv {
+.beerABV, .beerDescription {
+  font-size: 1.5rem
+}
+
+#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv, #contactDiv {
   background: darkolivegreen;
   margin: 2rem;
   border: 3px solid black;
