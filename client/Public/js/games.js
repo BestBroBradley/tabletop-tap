@@ -2,7 +2,9 @@
 $(document).ready(function() {
   $(".view-more, .delete").on("click", function(e) {
     console.log('clicked')
-    $(".modal").toggle();
+    console.log($(this).attr("id"))
+    let id = $(this).attr("id");
+    $(`#${id}.modal`).toggle();
   })
                                 
                                 

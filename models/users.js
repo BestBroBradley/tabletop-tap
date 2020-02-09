@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                is:["(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*"],
+                is:["^(?=.{8,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*$"],
                 len: [8]
             }
         },
