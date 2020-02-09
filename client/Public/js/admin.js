@@ -51,12 +51,12 @@ function parseBoardGameData(data) {
 	if (game.categories.length) {
 		let indexCategory = categoryIdArr.indexOf(game.categories[0].id)
 		if(indexCategory > -1) {
-			boardGame.categories = categoryArr[indexCategory];
+			boardGame.category = categoryArr[indexCategory];
 		} else {
-			boardGame.categories = "Unknown";
+			boardGame.category = "Unknown";
 		}
 	} else {
-		boardGame.categories = "Unknown";
+		boardGame.category = "Unknown";
 	}
 	return boardGame
 }
@@ -65,7 +65,6 @@ function parseBoardGameData(data) {
 $("#select-board-game").on("submit", function (e) {
 	e.preventDefault();
 	let id = $("#choose-game option:selected").val();
-	console.log(id);
 	if (id > 0) {
 		//  Make sure dynamically generated options have a id of the beer's id
 		$.get(`/api/games/${id}`).then((data) => {
@@ -99,7 +98,7 @@ $("#board-game-form").on("submit", function (e) {
 		max_players: "",
 		short_description: "",
 		long_description: "",
-		categories: ""
+		category: ""
 	};
 	for (let key in boardGame) {
 		if (key === "short_description" || key === "long_description"){
@@ -112,13 +111,12 @@ $("#board-game-form").on("submit", function (e) {
 	// If id is not equal to 0 then
 	if (id > 0) {
 		// We run a put
-		console.log("doing a put");
 		$.ajax({
 			url: `/api/games/${id}`,
 			type: 'PUT',
 			data: boardGame
 		}).then((data) => {
-			console.log(data.changedRows)
+			console.log("Updated board game")
 			$("#board-game-form").children().val("")
 			init()
 		}).catch((err) => {
@@ -126,10 +124,9 @@ $("#board-game-form").on("submit", function (e) {
 		});
 	// If id is equal to 0 then we run a post
 	} else {
-		console.log("doing a post");
 		$.post("/api/games", boardGame).then((data) => {
 			$("#board-game-form").children().val("")
-			console.log(`Added a board game!`);
+			console.log(`Added board game!`);
 			init()
 		}).catch((err) => {
 			throw err
@@ -145,7 +142,7 @@ $("#del-game").on("submit", function (e) {
 		url: `/api/games/${id}`,
 		type: 'DELETE',
 	}).then((data) => {
-		console.log(`Deleted game with id ${data.affectedRows}`)
+		console.log(`Deleted game`)
 		init();
 	}).catch((err) => {
 		throw err
@@ -166,7 +163,7 @@ $("#add-beer").on("submit", function (e) {
 	}
 	$("#add-beer").children().val("")
 	$.post("/api/beers", newBeer).then((data) => {
-		console.log("Added a new beer")
+		console.log("Added beer")
 		init();
 	}).catch(err => {
 		throw err
@@ -180,7 +177,6 @@ $("#select-beer").on("submit", function (e) {
 	if (id > 0) {
 		//  Make sure dynamically generated options have a id of the beer's id
 		$.get(`/api/beers/${id}`).then((data) => {
-			console.log(data.id);
 			$("#chosen-beer").val(data.beer_name)
 			$("#update-brewery").val(data.brewery)
 			$("#update-location").val(data.brewery_location)
@@ -211,7 +207,7 @@ $("#update-beer").on("submit", function (e) {
 		type: 'PUT',
 		data: updatedBeer
 	}).then((data) => {
-		console.log(`Updated beer with id ${data.changedRows}`)
+		console.log(`Updated beer`)
 		$("#update-beer").children().val("") // Clears everything
 		$("#choose-beer option:selected").val(0);
 		init();
@@ -228,7 +224,7 @@ $("#del-beer").on("submit", function (e) {
 		url: `/api/beers/${id}`,
 		type: 'DELETE',
 	}).then((data) => {
-		console.log(`Deleted beer with id ${data.affectedRows}`)
+		console.log(`Deleted beer`)
 		init();
 	}).catch((err) => {
 		throw err
@@ -240,7 +236,6 @@ function populateUpdateSelector(row, data) {
 	$(`#choose-${row}`).empty();
 	$(`#choose-${row}`).append($(`<option value="0">None Selected</option>`));
 	for (let item of data) {
-		// console.log(item);
 		let selectionId = item.id;
 		let selectionName = item[`${row}_name`];
 		if (row === "login") {
@@ -353,7 +348,7 @@ $("#del-login").on("submit", function(e) {
 		url: `/api/permissions/${id}`,
 		method: "DELETE"
 	}).then(response => {
-		console.log(response);
+		console.log("Deleted user");
 		init();
 		$("#del-login").children().val("");
 	}).catch(err => {
@@ -380,7 +375,6 @@ function init() {
 	});
 	// Functionality currently not added
 	getTableData("permissions", data =>	{
-		// console.log(data);
 		populateDeleteSelector("login", data);
 		populateUpdateSelector("login", data);
 	});
@@ -388,7 +382,6 @@ function init() {
 // Gets the table data //permission
 function getTableData(table, cb) {
 	$.get(`/api/${table}`, function(data) {
-		// console.log(data)
 		return cb(data)
 	}).catch(err => {
 		throw err;
@@ -400,7 +393,6 @@ function populateDeleteSelector(row, data) {
 	$(`#del-${row}-select`).empty();
 	$(`#del-${row}-select`).append($(`<option value="0">None Selected</option>`));
 	for (let item of data) {
-		// console.log(item);
 		let selectionId = item.id;
 		let selectionName = item[`${row}_name`];
 		if (row === "login") {
