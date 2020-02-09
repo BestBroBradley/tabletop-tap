@@ -10,16 +10,22 @@ $(document).ready(function() {
                                 
   $("#searchGames").on("submit", function (evt) {
     evt.preventDefault()
-    $.get("/api/games/search/" + $("#query").val().trim(), function (data) {
-      // console.log(data)
-      console.log(data)
-      $.ajax({
-        url :"/html/games/",
-        method:"post",
-        data:data
-      })
-    }).catch(err => {
-      throw err;
-    });
+    // $.get("/api/games/search/" + $("#query").val().trim(), function (data) {
+    //   // console.log(data)
+    //   console.log(data)
+    if($("#query").val().trim()){
+    document.location = '/html/games/search/'+ $("#query").val().trim()
+  }
+      // $.ajax({
+      //   url : "http://localhost:8080/html/games/",
+      //   method:"get"
+      // })
+    // })
+    // .then((res)=>{
+    //   console.log(res)
+    //   // location.reload();
+    // }).catch(err => {
+    //   console.log(err)}
+    // });
   })
 })

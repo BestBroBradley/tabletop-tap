@@ -81,13 +81,11 @@ module.exports = {
 // json object for testing purposes
 // {
 //     "game_name":"asdf",
-//     "img_thumb":"asdf",
-//     "img_original":"asdf",
 //     "short_description":"asdf"
-//     ,"long_description":"asdf"
+//     ,"long_description":"asdbcbnccvbncvbncvbncvbncvbncvbncvbnf"
 //     ,"rating":4
-//     ,"url":"asdf"
-//     ,"min_time":9999
+//     ,"url":"asdf.com"
+//     ,"min_time":9998
 //     ,"max_time":9999
 //     ,"min_players":4
 //     ,"category":"asdasdas"
