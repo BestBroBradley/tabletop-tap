@@ -15,6 +15,7 @@ router.get('/signup', function (req, res) {
   })
 })
 
+//!! ADD THE MIDDLEWARE isAuthenticated BEFORE WE DEPLOY!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 router.get('/', function (req, res) { //,isAuthenticated
   res.render("admin", { pageTitle: "Admin", youAreUsingPug: true })
 })
