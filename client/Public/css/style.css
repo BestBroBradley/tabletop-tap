@@ -162,7 +162,13 @@ p.subtitle {
 #description {
   width: 90%;
   margin: auto 0;
-  text-align: center
+  text-align: center;
+}
+#modalBoardGameDescription {
+  width: 90%;
+  margin: auto 0;
+  text-align: justify;
+  text-indent: 2em;
 }
 
 .alphabet {
@@ -221,10 +227,11 @@ footer:not(#modal-foot) {
 
 .wrapper {
   max-width: 400px;
-  margin: 20px auto;
+  margin: auto;
 }
   
 .cutLines {
+  text-align: justify;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 7;
