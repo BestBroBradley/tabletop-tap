@@ -29,7 +29,7 @@ module.exports = {
             })
         }else {
             res.status(403).end()
-        }
+        }   
     },
 
     authenticate: function (req, res) {
