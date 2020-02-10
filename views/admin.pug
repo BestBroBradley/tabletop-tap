@@ -5,6 +5,38 @@ head
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
   script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
   title Admin Page
+  style.
+    * {
+    font-family: sans-serif
+    }
+    .container {
+    border: 2px solid black;
+    padding: 10px 20px 20px;
+    flex: 1;
+    margin: 10px 0;
+    }
+    h1 {
+    text-align: center;
+    }
+    .beerwrap {
+    display: flex;
+    margin: -10px 0
+    }
+    .board-game-wrap {
+    display: flex;
+    margin: -10px 0
+    }
+    textarea {
+    width: 100%;
+    height: 200px
+    }
+    .logoutBtn {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      padding: 10px;
+      max-width: 100px;
+    }
 
 button(class="logoutBtn") Logout
 h1 Admin Page
