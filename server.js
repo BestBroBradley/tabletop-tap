@@ -46,6 +46,7 @@ db.sequelize.sync({ force: false,logging : false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
     console.log("allo")
+    console.log(__dirname+"/client/public")
   });
 });
 
