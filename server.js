@@ -19,11 +19,7 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-<<<<<<< HEAD
 app.use(express.static("./client/public"));
-=======
-app.use(serveStatic(path.join(__dirname+"/client/public")));
->>>>>>> 4f502315afb3e36b53484d2605817a3d0075e03e
 
 app.use(routes)
 
