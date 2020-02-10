@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 8080;
 const pug = require("pug");
 const db = require("./models");
 const path = require("path");
+var serveStatic = require('serve-static')
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +19,11 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
+<<<<<<< HEAD
 app.use(express.static("./client/public"));
+=======
+app.use(serveStatic(path.join(__dirname+"/client/public")));
+>>>>>>> 4f502315afb3e36b53484d2605817a3d0075e03e
 
 app.use(routes)
 
