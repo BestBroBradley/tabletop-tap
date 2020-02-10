@@ -1,4 +1,3 @@
-process.env.PWD = process.cwd()
 const express = require("express");
 const session = require("express-session");
 const passport = require("./config/passport");
@@ -19,8 +18,7 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-app.use(express.static(process.env.PWD+"/client/public"));
+app.use(express.static(path.join(__dirname, "/client/public")));
 
 app.use(routes)
 
