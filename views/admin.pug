@@ -30,6 +30,14 @@ head
     width: 100%;
     height: 200px
     }
+    .logoutBtn {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      padding: 10px;
+      max-width: 100px;
+    }
+button(class="logoutBtn") Logout
 h1 Admin Page
 .beerwrap
   .container
@@ -94,7 +102,7 @@ h1 Admin Page
     h3 Rating:
     input(name='rating')
     h3 Category:
-    input(name='categories')
+    input(name='category')
     h3 Minimum Time:
     input(name='min_time')
     h3 Maximum Time
@@ -132,7 +140,7 @@ h1 Admin Page
         option(value='11') 11:00 am
         option(value='12') 12:00 pm
         option(value='13') 1:00 pm
-        option(value='14') 2:00 pm
+        option(value='14' selected) 2:00 pm
         option(value='15') 3:00 pm
         option(value='16') 4:00 pm
         option(value='17') 5:00 pm
@@ -147,7 +155,7 @@ h1 Admin Page
         option(value='20') 8:00 pm
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
-        option(value='23') 11:00 pm
+        option(value='23' selected) 11:00 pm
         option(value='24') 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
@@ -165,7 +173,7 @@ h1 Admin Page
         option(value='11') 11:00 am
         option(value='12') 12:00 pm
         option(value='13') 1:00 pm
-        option(value='14') 2:00 pm
+        option(value='14' selected) 2:00 pm
         option(value='15') 3:00 pm
         option(value='16') 4:00 pm
         option(value='17') 5:00 pm
@@ -180,7 +188,7 @@ h1 Admin Page
         option(value='20') 8:00 pm
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
-        option(value='23') 11:00 pm
+        option(value='23' selected) 11:00 pm
         option(value='24') 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
@@ -198,7 +206,7 @@ h1 Admin Page
         option(value='11') 11:00 am
         option(value='12') 12:00 pm
         option(value='13') 1:00 pm
-        option(value='14') 2:00 pm
+        option(value='14' selected) 2:00 pm
         option(value='15') 3:00 pm
         option(value='16') 4:00 pm
         option(value='17') 5:00 pm
@@ -213,7 +221,7 @@ h1 Admin Page
         option(value='20') 8:00 pm
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
-        option(value='23') 11:00 pm
+        option(value='23' selected) 11:00 pm
         option(value='24') 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
@@ -231,7 +239,7 @@ h1 Admin Page
         option(value='11') 11:00 am
         option(value='12') 12:00 pm
         option(value='13') 1:00 pm
-        option(value='14') 2:00 pm
+        option(value='14' selected) 2:00 pm
         option(value='15') 3:00 pm
         option(value='16') 4:00 pm
         option(value='17') 5:00 pm
@@ -246,7 +254,7 @@ h1 Admin Page
         option(value='20') 8:00 pm
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
-        option(value='23') 11:00 pm
+        option(value='23' selected) 11:00 pm
         option(value='24') 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
@@ -262,7 +270,7 @@ h1 Admin Page
         option(value='9') 9:00 am
         option(value='10') 10:00 am
         option(value='11') 11:00 am
-        option(value='12') 12:00 pm
+        option(value='12' selected) 12:00 pm
         option(value='13') 1:00 pm
         option(value='14') 2:00 pm
         option(value='15') 3:00 pm
@@ -280,7 +288,7 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='24') 12:00 am
+        option(value='24' selected) 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
         option(value='27') 3:00 am
@@ -295,7 +303,7 @@ h1 Admin Page
         option(value='9') 9:00 am
         option(value='10') 10:00 am
         option(value='11') 11:00 am
-        option(value='12') 12:00 pm
+        option(value='12' selected) 12:00 pm
         option(value='13') 1:00 pm
         option(value='14') 2:00 pm
         option(value='15') 3:00 pm
@@ -313,7 +321,7 @@ h1 Admin Page
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
         option(value='23') 11:00 pm
-        option(value='24') 12:00 am
+        option(value='24' selected) 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
         option(value='27') 3:00 am
@@ -328,7 +336,7 @@ h1 Admin Page
         option(value='9') 9:00 am
         option(value='10') 10:00 am
         option(value='11') 11:00 am
-        option(value='12') 12:00 pm
+        option(value='12' selected) 12:00 pm
         option(value='13') 1:00 pm
         option(value='14') 2:00 pm
         option(value='15') 3:00 pm
@@ -345,7 +353,7 @@ h1 Admin Page
         option(value='20') 8:00 pm
         option(value='21') 9:00 pm
         option(value='22') 10:00 pm
-        option(value='23') 11:00 pm
+        option(value='23' selected) 11:00 pm
         option(value='24') 12:00 am
         option(value='25') 1:00 am
         option(value='26') 2:00 am
@@ -357,22 +365,29 @@ h1 Admin Page
       br
       hr
       button Submit
-// Deleted the address line
-.container
-  form#add-employee
-    h2 Add employee to permissions:
-    p Username:
-    input#login
-    p Password:
-    input#password
-    p Email:
-    input#email
-    button Submit
-.container
-  form#del-login
-    h2 Remove employee from permissions:
-    p Username:
-    select#del-login-select
-      option#0 None Selected
-    button DELETE
+if tier === 'TOPADMIN'
+  .container
+    form#add-employee
+      h2 Add employee to permissions:
+      p Username:
+      input#login
+      //- Who's password is supposed to be entered in here? The new user or the admin?
+      p Password:
+      input#password
+      p Email:
+      input#email
+      p Tier:
+      input#tier
+      br
+      hr
+      button Submit
+  .container
+    form#del-login
+      h2 Remove employee from permissions:
+      p Username:
+      select#del-login-select
+        option#0 None Selected
+      br
+      hr
+      button Submit
 script(type='text/javascript' src='/js/admin.js')

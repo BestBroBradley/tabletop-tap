@@ -162,7 +162,13 @@ p.subtitle {
 #description {
   width: 90%;
   margin: auto 0;
-  text-align: center
+  text-align: center;
+}
+#modalBoardGameDescription {
+  width: 90%;
+  margin: auto 0;
+  text-align: justify;
+  text-indent: 2em;
 }
 
 .alphabet {
@@ -218,41 +224,17 @@ footer:not(#modal-foot) {
   margin: 1rem
 }
 
-/* Animations */
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+
+.wrapper {
+  max-width: 400px;
+  margin: auto;
+}
+  
+.cutLines {
+  text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
 }
 
-@-webkit-keyframes slideInDown {
-  from {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.slideInDown {
-  -webkit-animation-name: slideInDown;
-  animation-name: slideInDown;
-}
