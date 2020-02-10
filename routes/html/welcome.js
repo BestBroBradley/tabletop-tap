@@ -1,15 +1,21 @@
 const path = require("path");
 const router = require("express").Router();
-
-var renderObj = {
-  pageTitle: "Welcome",
-  h1Title: "Tabletop Tap",
-  subtitle: "The Down Low",
-  welcome: true
-}
+const db = require("../../models/");
 
 router.get('/', function (req, res) {
-  res.render("index", renderObj)
+  db.Hours.findAll({
+
+  }).then(data => {
+    var renderObj = {
+      pageTitle: "Welcome",
+      h1Title: "Tabletop Tap",
+      subtitle: "The Down Low",
+      welcome: true,
+      hours: data
+    }
+
+    res.render("index", renderObj)
+  })
 })
 
 module.exports = router;

@@ -3,21 +3,23 @@ const passport = require("../../config/passport");
 const permissionsController = require("../../controllers/permissionsController");
 const isAuthenticated = require("../../config/Middleware/isAuthenticated");
 
-// Matches with "/api/books"
+// Matches with "/api/permissions"
 router.route("/")
   .get(permissionsController.findAll)
   .post(permissionsController.create)
-  .put(permissionsController.update);
+  .put(isAuthenticated,permissionsController.update);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/permissions/:id"
 router
   .route("/:id")
-  .delete(permissionsController.remove);
+  .delete(isAuthenticated,permissionsController.remove);
 
 router.route("/login")
 .post(passport.authenticate("local"),permissionsController.authenticate);
 
-router.post('/logout').post(permissionsController.logout);
+//.post .post
+router.route('/logout')
+  .get(isAuthenticated,permissionsController.logout);
 module.exports = router;
 
 

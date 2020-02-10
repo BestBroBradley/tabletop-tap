@@ -5,5 +5,5 @@ module.exports = function (req, res, next) {
       console.log(req.user)
       return next();
     }
-    return res.sendStatus(403);
+    return res.status(403).redirect('/html/admin/login');
   };

@@ -53,7 +53,7 @@ p.subtitle {
   margin: 1rem 1rem; */
 }
 
-#eventsDiv {
+.eventsDiv {
   padding: 2rem;
   border: 3px solid black;
   margin: auto;
@@ -62,15 +62,76 @@ p.subtitle {
   background: darkolivegreen
 }
 
+#view-text {
+  color: #4a4a4a
+}
+
+.has-image-centered {
+  margin: auto;
+  text-align: center;
+}
+
 #fbEvents {
   width: 100%;
 }
 
-#aboutUsDiv, #gamesDiv, #alphabetDiv {
+.beerName {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem
+}
+
+.beerPop {
+  margin: 20px;
+  color: #fdefd4
+}
+
+.link {
+  color: darkslategrey;
+  font-size: 1.5rem
+}
+
+.beerABV, .beerDescription {
+  font-size: 1.5rem
+}
+
+#aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv, .contactDiv, #welcomeDiv {
   background: darkolivegreen;
   margin: 2rem;
   border: 3px solid black;
   border-radius: 2%
+}
+
+#welcomeNote {
+  font-size: 1.5rem;
+  font-family: 'Racing Sans One', cursive;
+}
+
+.contactDiv {
+  width: 90%;
+  margin: auto
+}
+
+#contact-title {
+  font-size: 1.5rem
+}
+.modal-background {
+  background: darkslategrey;
+  opacity: .8
+}
+
+.modal-card-body {
+  background: darkkhaki;
+  border: 2px solid rgb(45, 45, 167);
+}
+
+#modalDiv {
+  background: olive;
+  padding: 0;
+  border: 5px solid rgb(45, 45, 167);
+}
+
+.delete {
+
 }
 
 #aboutUs, #gamesText {
@@ -82,8 +143,32 @@ p.subtitle {
   color: #fdefd4
 }
 
-#searchBtn {
+#searchBtn, #emailBtn {
   margin-top: 10px;
+}
+
+.modal-title {
+  font-size: 2rem;
+  color: #4a4a4a
+}
+
+.modal-content {
+  width: 100%;
+}
+
+#modal-game-title {
+  text-align: center
+}
+#description {
+  width: 90%;
+  margin: auto 0;
+  text-align: center;
+}
+#modalBoardGameDescription {
+  width: 90%;
+  margin: auto 0;
+  text-align: justify;
+  text-indent: 2em;
 }
 
 .alphabet {
@@ -106,8 +191,12 @@ p.head {
 }
 p.body {
   text-indent: 1rem;
-  font-size: 0.5rem;
+  font-size: .75rem;
   color: whitesmoke;
+}
+
+p.intro {
+  text-align: center;
 }
 
 #carousel {
@@ -120,7 +209,7 @@ p.body {
   text-align: center;
 }
 
-footer {
+footer:not(#modal-foot) {
   background: #fdefd4;
   border-top: solid black 3px;
   padding-top: 9px;
@@ -135,41 +224,17 @@ footer {
   margin: 1rem
 }
 
-/* Animations */
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+
+.wrapper {
+  max-width: 400px;
+  margin: auto;
+}
+  
+.cutLines {
+  text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
 }
 
-@-webkit-keyframes slideInDown {
-  from {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.slideInDown {
-  -webkit-animation-name: slideInDown;
-  animation-name: slideInDown;
-}

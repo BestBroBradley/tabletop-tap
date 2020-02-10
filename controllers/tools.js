@@ -1,5 +1,5 @@
 const intKeys = ["min_time", "max_time", "min_players", "max_players"];
-const floatKeys = ["rating", "abv", "price", "id"];
+const floatKeys = ["open_time", "close_time", "rating", "abv", "price", "id"];
 
 function toNum (data) {
   for (let key in data) {
