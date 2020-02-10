@@ -161,6 +161,14 @@ p.subtitle {
   color: #fdefd4
 }
 
+@media only screen and (max-width: 600px) {
+  .searchText {
+    width: 90%;
+    text-align: center;
+    font-size: 1.5rem
+  }
+}
+
 #searchBtn, #emailBtn {
   margin-top: 10px;
 }
