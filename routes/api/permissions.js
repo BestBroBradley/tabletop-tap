@@ -7,19 +7,19 @@ const isAuthenticated = require("../../config/Middleware/isAuthenticated");
 router.route("/")
   .get(permissionsController.findAll)
   .post(permissionsController.create)
-  .put(permissionsController.update);
+  .put(isAuthenticated,permissionsController.update);
 
 // Matches with "/api/permissions/:id"
 router
   .route("/:id")
-  .delete(permissionsController.remove);
+  .delete(isAuthenticated,permissionsController.remove);
 
 router.route("/login")
 .post(passport.authenticate("local"),permissionsController.authenticate);
 
 //.post .post
 router.route('/logout')
-  .get(permissionsController.logout);
+  .get(isAuthenticated,permissionsController.logout);
 module.exports = router;
 
 

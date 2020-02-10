@@ -1,10 +1,10 @@
 
-if game.min_time & game.max_time
+if game.min_time && game.max_time
   -var pTime = `${game.min_time} - ${game.max_time} mins`
 else
   -var pTime = `${game.min_time} mins`
 
-if game.min_players & game.max_players
+if game.min_players && game.max_players
   -var pCount = `${game.min_players} - ${game.max_players} players`
 else
   -var pCount = `${game.min_players} players`
