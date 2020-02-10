@@ -1,4 +1,4 @@
-{
+{ "heroku-postbuild": "npm run build",
   "name": "project-two",
   "version": "1.0.0",
   "description": "Tabletop Tap business page",
