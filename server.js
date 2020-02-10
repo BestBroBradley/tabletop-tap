@@ -1,3 +1,4 @@
+process.env.PWD = process.cwd()
 const express = require("express");
 const session = require("express-session");
 const passport = require("./config/passport");
@@ -7,7 +8,6 @@ const PORT = process.env.PORT || 8080;
 const pug = require("pug");
 const db = require("./models");
 const path = require("path");
-process.env.PWD = process.cwd()
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
