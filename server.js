@@ -19,12 +19,19 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(express.static("./client/public"));
+app.use(express.static(path.join(__dirname, "./client/public")));
 
 app.use(routes)
 
+// all environments
+// app.use(express.favicon());
+// app.use(express.logger('dev'));
+// app.use(express.bodyParser());
+// app.use(express.methodOverride());
+// app.use(express.static(path.join(__dirname, 'public')));
+
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", __dirname + "/views");
 
 db.sequelize.sync({ force: false }).then(function() {
 
