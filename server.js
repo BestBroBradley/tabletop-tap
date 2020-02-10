@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 8080;
 const pug = require("pug");
 const db = require("./models");
 const path = require("path");
+process.env.PWD = process.cwd()
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +19,7 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static("client/public"));
+app.use(express.static(process.env.PWD+"client/public"));
 
 app.use(routes)
 
