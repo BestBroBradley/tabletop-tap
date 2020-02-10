@@ -1,3 +1,4 @@
+process.env.PWD = process.cwd();
 const express = require("express");
 const session = require("express-session");
 const passport = require("./config/passport");
@@ -46,7 +47,7 @@ db.sequelize.sync({ force: false,logging : false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
     console.log("allo")
-    console.log(__dirname+"/client/public")
+    console.log(process.env.PWD+"/client/public")
   });
 });
 
