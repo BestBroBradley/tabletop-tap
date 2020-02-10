@@ -9,34 +9,41 @@ module.exports = {
         })
     },
     create: function (req, res) {
-        db.Users.create(req.body).then(data => {
-            res.json(data)
-        }).catch(() => {
-            res.status(500).end()
-        })
-    },
-    update: function (req, res) {
-        db.Users.findOne({ where: { id: req.body.id } }).then(user => {
-            user.update(req.body).then((data) => {
+      
+            db.Users.create(req.body).then(data => {
                 res.json(data)
+            }).catch(() => {
+                res.status(500).end()
             })
-        }).catch(() => {
-            res.status(404).end();
-        })
+        
+    },
+    update: function (req, res) { console.log("req.user")
+        console.log(req.user)
+        if (req.user.tier === "TOPADMIN") {
+            db.Users.findOne({ where: { id: req.body.id } }).then(user => {
+                user.update(req.body).then((data) => {
+                    res.json(data)
+                })
+            }).catch(() => {
+                res.status(404).end();
+            })
+        }else {
+            res.status(403).end()
+        }
     },
 
     authenticate: function (req, res) {
-        
+
         if (req.user) {
-            res.sendStatus(200,"/html/admin")
+            res.sendStatus(200, "/html/admin")
         }
-        
+
     },
 
-    logout: function(req, res){
+    logout: function (req, res) {
         req.logout();
-        res.sendStatus(200,"/html/admin/login");
-      },
+        res.sendStatus(200, "/html/admin/login");
+    },
 
 
 
@@ -63,14 +70,18 @@ module.exports = {
 
 
     remove: function (req, res) {
-        db.Users.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(data => {
-            res.json(data)
-        }).catch(() => {
-            res.status(404).end()
-        })
+        if (req.user.tier === 'TOPADMIN') {
+            db.Users.destroy({
+                where: {
+                    id: req.params.id
+                }
+            }).then(data => {
+                res.json(data)
+            }).catch(() => {
+                res.status(404).end()
+            })
+        } else {
+            res.status(403).end()
+        }
     }
 }
