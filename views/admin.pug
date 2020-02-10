@@ -365,29 +365,29 @@ h1 Admin Page
       br
       hr
       button Submit
-// Deleted the address line
-.container
-  form#add-employee
-    h2 Add employee to permissions:
-    p Username:
-    input#login
-    //- Who's password is supposed to be entered in here? The new user or the admin?
-    p Password:
-    input#password
-    p Email:
-    input#email
-    p Tier:
-    input#tier
-    br
-    hr
-    button Submit
-.container
-  form#del-login
-    h2 Remove employee from permissions:
-    p Username:
-    select#del-login-select
-      option#0 None Selected
-    br
-    hr
-    button Submit
+if tier === 'TOPADMIN'
+  .container
+    form#add-employee
+      h2 Add employee to permissions:
+      p Username:
+      input#login
+      //- Who's password is supposed to be entered in here? The new user or the admin?
+      p Password:
+      input#password
+      p Email:
+      input#email
+      p Tier:
+      input#tier
+      br
+      hr
+      button Submit
+  .container
+    form#del-login
+      h2 Remove employee from permissions:
+      p Username:
+      select#del-login-select
+        option#0 None Selected
+      br
+      hr
+      button Submit
 script(type='text/javascript' src='/js/admin.js')
