@@ -25,26 +25,26 @@ app.use(routes)
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-app.use(express.static(__dirname+"/client/public"));
 db.sequelize.sync({ force: false,logging : false }).then(function() {
-
+  
   // db.Users.create({
-  //   login:"test",
-  //   password:"Password1",
-  //   email:"test@gmail.com",
-  //   tier:"ADMIN"
-  // });
-
-  // app.get("api/admin/login",{login:"test",
-  // password:"Password1",})
-  // db.Users.create({
-  //   login:"test2",
-  //   password:"Password1",
-  //   email:"test1@gmail.com",
-  //   tier:"employee"
-  // })
-
-  app.listen(PORT, function() {
+    //   login:"test",
+    //   password:"Password1",
+    //   email:"test@gmail.com",
+    //   tier:"ADMIN"
+    // });
+    
+    // app.get("api/admin/login",{login:"test",
+    // password:"Password1",})
+    // db.Users.create({
+      //   login:"test2",
+      //   password:"Password1",
+      //   email:"test1@gmail.com",
+      //   tier:"employee"
+      // })
+      
+      app.listen(PORT, function() {
+        app.use(express.static(__dirname+"/client/public"));
     console.log("App listening on PORT " + PORT);
     console.log("allo")
     console.log(process.env.PWD+"/client/public")
