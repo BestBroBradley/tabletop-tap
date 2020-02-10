@@ -21,6 +21,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "0.10.11",
+    "npm": "1.2.25"
+} ,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BestBroBradley/project-two.git"
@@ -32,3 +36,5 @@
   },
   "homepage": "https://github.com/BestBroBradley/project-two#readme"
 }
+
+
