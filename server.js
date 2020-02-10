@@ -33,7 +33,7 @@ app.use(routes)
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
 
   // db.Users.create({
   //   login:"test",
