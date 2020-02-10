@@ -53,6 +53,12 @@ p.subtitle {
   margin: 1rem 1rem; */
 }
 
+@media only screen and (max-width: 600px) {
+  .ff7Box.is-four-fifths-mobile {
+    width: 90%;
+  }
+}
+
 .eventsDiv {
   padding: 2rem;
   border: 3px solid black;
@@ -101,6 +107,12 @@ p.subtitle {
   border-radius: 2%
 }
 
+@media only screen and (max-width: 600px) {
+  #aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv, .contactDiv, #welcomeDiv {
+    margin: 1rem
+  }
+}
+
 #welcomeNote {
   font-size: 1.5rem;
   font-family: 'Racing Sans One', cursive;
@@ -136,6 +148,12 @@ p.subtitle {
 
 #aboutUs, #gamesText {
   font-size: 1rem  
+}
+
+@media only screen and (max-width: 600px) {
+  #aboutUs, #gamesText {
+    font-size: 75%
+  }
 }
 
 .searchText {
