@@ -18,13 +18,13 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname+"/client/public"));
 
 app.use(routes)
 
 app.set("view engine", "pug");
 app.set("views", "./views");
 
+app.use(express.static(__dirname+"/client/public"));
 db.sequelize.sync({ force: false,logging : false }).then(function() {
 
   // db.Users.create({
@@ -45,7 +45,7 @@ db.sequelize.sync({ force: false,logging : false }).then(function() {
 
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
-    console.log(__dirname+"/client/public")
+    console.log("allo")
   });
 });
 
