@@ -25,8 +25,8 @@ div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-thir
 //- Modal for each individual card
 div(class="modal" id = game.id)
   div.modal-background
-  div.modal-card
-    header.modal-card-head
+  div(class="modal-card")
+    header(class="modal-card-head")
       p(class="modal-card-title modal-title" id="modal-game-title") #{game.game_name}
       button(class="delete" aria-label="close" id= game.id)
     section.modal-card-body

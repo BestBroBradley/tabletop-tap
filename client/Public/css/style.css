@@ -188,10 +188,12 @@ p.subtitle {
 
 .modal-content {
   width: 100%;
+  margin: 0
 }
 
 #modal-game-title {
-  text-align: center
+  text-align: center;
+  width: 80%;
 }
 #description {
   width: 90%;
@@ -277,7 +279,11 @@ footer:not(#modal-foot) {
     font-size: 1.5rem
   }
   .contact-body {
-    font-size: 70%;
+    font-size: 65%;
+  }
+
+  .modal-card {
+    width: 90%
   }
 }
 
