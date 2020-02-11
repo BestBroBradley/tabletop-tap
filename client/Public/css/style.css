@@ -276,4 +276,8 @@ footer:not(#modal-foot) {
   h1.title {
     font-size: 1.5rem
   }
+  .contact-body {
+    font-size: 70%;
+  }
 }
+
