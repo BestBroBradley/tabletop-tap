@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         abv: {
-            type: DataTypes.DECIMAL(4,2),
+            type: DataTypes.DECIMAL(4,1),
             allowNull: false,
             validate: {
                 max:99.99
