@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // .ready method runs the JavaScript as soon as the page's DOM becomes safe to manipulate
+=======
+>>>>>>> 26753164d0a09b2e9810ea405cacc5824579bd46
 $(document).ready(function() {
   $(".view-more, .delete").on("click", function(e) {
     console.log('clicked')
