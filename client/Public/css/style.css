@@ -56,8 +56,15 @@ p.subtitle {
 @media only screen and (max-width: 600px) {
   .ff7Box.is-four-fifths-mobile {
     width: 90%;
+    margin: 1rem
+  }
+  
+  .column.is-four-fifths-mobile:not(.ff7Box) {
+    width: 100%;
   }
 }
+
+
 
 .eventsDiv {
   padding: 2rem;
@@ -158,7 +165,8 @@ p.subtitle {
 
 .searchText {
   font-size: 2rem;
-  color: #fdefd4
+  color: #fdefd4;
+  margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
@@ -264,3 +272,8 @@ footer:not(#modal-foot) {
   -webkit-box-orient: vertical;
 }
 
+@media only screen and (max-width: 500px) {
+  h1.title {
+    font-size: 1.5rem
+  }
+}
