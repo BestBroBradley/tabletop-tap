@@ -12,7 +12,6 @@ require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
@@ -22,13 +21,6 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, "client/Public")));
 
 app.use(routes)
-
-// all environments
-// app.use(express.favicon());
-// app.use(express.logger('dev'));
-// app.use(express.bodyParser());
-// app.use(express.methodOverride());
-// app.use(express.static(path.join(__dirname, 'public')));
 
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
