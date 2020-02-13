@@ -53,6 +53,19 @@ p.subtitle {
   margin: 1rem 1rem; */
 }
 
+@media only screen and (max-width: 600px) {
+  .ff7Box.is-four-fifths-mobile {
+    width: 90%;
+    margin: 1rem
+  }
+  
+  .column.is-four-fifths-mobile:not(.ff7Box) {
+    width: 100%;
+  }
+}
+
+
+
 .eventsDiv {
   padding: 2rem;
   border: 3px solid black;
@@ -101,6 +114,12 @@ p.subtitle {
   border-radius: 2%
 }
 
+@media only screen and (max-width: 600px) {
+  #aboutUsDiv, #gamesDiv, #alphabetDiv, #modalDiv, #beersDiv, .contactDiv, #welcomeDiv {
+    margin: 1rem
+  }
+}
+
 #welcomeNote {
   font-size: 1.5rem;
   font-family: 'Racing Sans One', cursive;
@@ -138,9 +157,24 @@ p.subtitle {
   font-size: 1rem  
 }
 
+@media only screen and (max-width: 600px) {
+  #aboutUs, #gamesText {
+    font-size: 75%
+  }
+}
+
 .searchText {
   font-size: 2rem;
-  color: #fdefd4
+  color: #fdefd4;
+  margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchText {
+    width: 90%;
+    text-align: center;
+    font-size: 1.5rem
+  }
 }
 
 #searchBtn, #emailBtn {
@@ -154,10 +188,12 @@ p.subtitle {
 
 .modal-content {
   width: 100%;
+  margin: 0
 }
 
 #modal-game-title {
-  text-align: center
+  text-align: center;
+  width: 80%;
 }
 #description {
   width: 90%;
@@ -236,5 +272,18 @@ footer:not(#modal-foot) {
   display: -webkit-box;
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 500px) {
+  h1.title {
+    font-size: 1.5rem
+  }
+  .contact-body {
+    font-size: 65%;
+  }
+
+  .modal-card {
+    width: 90%
+  }
 }
 

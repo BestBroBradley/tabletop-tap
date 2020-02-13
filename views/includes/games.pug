@@ -1,9 +1,9 @@
 div(id="gamesDiv" class="columns is-vcentered is-mobile is-multiline is-centered")
-  div(class="column ff7Box is-three-quarters-mobile is-one-fourth-desktop read-text")
+  div(class="column ff7Box is-four-fifths-mobile is-one-fourth-desktop read-text")
     p.head Our Games
     br
     p.body#gamesText Come into our taproom to play one of our 180+ tabletop games!  Whether you're a casual gamer looking for something light or want to settle in for a serious strategy game, we have just the choice for you! 
-  div(class="column is-three-quarters-mobile is-one-fourth-desktop")
+  div(class="column is-full-mobile is-one-fourth-desktop")
     p(class="searchText has-text-centered") Check for something specific
     br
     div(class="has-text-centered")
@@ -12,7 +12,7 @@ div(id="gamesDiv" class="columns is-vcentered is-mobile is-multiline is-centered
         br
         button(id="searchBtn" type="submit" class="button is-link is-rounded") Search
       hr
-      br
+      br(class="is-hidden-mobile")
       p(class="searchText") Or check out our library below!
   div(class="column is-three-quarters-mobile is-one-fourth-desktop")
     img(src="/images/games.jpg" alt="pic of front door")
@@ -27,7 +27,7 @@ div(class="modal")
       div(id="modalDiv" class="columns is-vcentered is-mobile is-multiline is-centered")
         div(class="column is-one-third-desktop is-full-mobile")
           div(class="has-image-centered")
-            img(src="http://placekitten.com/200/300")
+            img(src="https://placekitten.com/200/300")
         div(class="column is-two-thirds-desktop is-full-mobile")
           p.modal-content Category: cooperative
           p.modal-content Rating: 2.5/5
@@ -78,47 +78,4 @@ div(id="searchResults" class="columns is-mobile is-multiline is-centered")
   each game in gameArray
     include components/gameItem
 
-script(src= "/js/games.js" type="text/javascript").
-  //- div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
-  //-   p Name: 
-  //-   p Player count: 2-6
-  //-   p Time commitment: 30-60 mins
-  //-   p Category: Cooperative
-  //-   div.has-text-centered
-  //-     a(href="#") More info
-  //- div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
-  //-   p Name: Pandemic
-  //-   p Player count: 2-5
-  //-   p Time commitment: 30-60 mins
-  //-   p Category: Cooperative
-  //-   div.has-text-centered
-  //-     a(href="#") More info
-  //- div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
-  //-   p Name: Pandemic
-  //-   p Player count: 2-5
-  //-   p Time commitment: 30-60 mins
-  //-   p Category: Cooperative
-  //-   div.has-text-centered
-  //-     a(href="#") More info
-  //- div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
-  //-   p Name: Pandemic
-  //-   p Player count: 2-5
-  //-   p Time commitment: 30-60 mins
-  //-   p Category: Cooperative
-  //-   div.has-text-centered
-  //-     a(href="#") More info
-  //- div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
-  //-   p Name: Pandemic
-  //-   p Player count: 2-5
-  //-   p Time commitment: 30-60 mins
-  //-   p Category: Cooperative
-  //-   div.has-text-centered
-  //-     a(href="#") More info
-  //- div(class="resultDiv column is-two-thirds-mobile is-one-third-tablet is-one-third-desktop")
-  //-   p Name: Pandemic
-  //-   p Player count: 2-5
-  //-   p Time commitment: 30-60 mins
-  //-   p Category: Cooperative
-  //-   div.has-text-centered
-  //-     a(href="#") More info
-
+script(src= "/js/games.js" type="text/javascript")

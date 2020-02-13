@@ -7,23 +7,23 @@ const PORT = process.env.PORT || 8080;
 const pug = require("pug");
 const db = require("./models");
 const path = require("path");
+var compression = require("compression")
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, "client/public")));
-
+app.use(express.static(path.join(__dirname, "client/Public")));
+app.use(compression())
 app.use(routes)
 
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("views", __dirname + "/views");
 
 db.sequelize.sync({ force: false }).then(function() {
 
@@ -47,4 +47,3 @@ db.sequelize.sync({ force: false }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-

@@ -169,7 +169,7 @@ $("#add-beer").on("submit", function (e) {
 		brewery_location: $("#new-brewery-location").val().trim(),
 		short_description: $("#new-beer-short").val().trim(),
 		long_description: $("#new-beer-long").val().trim(),
-		abv: $("#new-abv").val().trim(),
+		abv: parseFloat($("#new-abv").val().trim()).toFixed(1),
 	}
 	$("#add-beer").children().val("")
 	$.post("/api/beers", newBeer).then((data) => {
