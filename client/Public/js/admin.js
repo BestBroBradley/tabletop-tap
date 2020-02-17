@@ -1,5 +1,120 @@
 var categoryArr = ["123","4x","Abstract","Adventure","Age of Reason","Aliens","Alternate History","American West","Ancient","Animals","Apocalyptic","Art","Aviation","Bluffing","Campaign","Card Game","Children's Game","City Building","Civil War","Civilization","Collectible Components","Comic Book / Strip","Conversation","Cooperative","Cube Rail","Cyberpunk","Deduction","Dexterity","Dice","Dinosaurs","Drinking","Dungeons & Dragons","Economic","Educational","Electronic","Environmental","Espionage","Eurogame","Expansion","Exploration","Family Game","Fan Made","Fantasy","Farming","Fighting","Fishing","Flicking","Food","Gay","Halloween","Horror","Humor","Industry/Manufacturing","Japan","Kickstarter","Legacy","Luck","Mafia","Math","Mature / Adult","Mecha","Medical","Medieval","Memory","Miniatures","Modern Warfare","Movie Theme","Movies / TV / Radio theme","Murder/Mystery","Mythology","Napoleonic","Nautical","Negotiation","Ninja's","Ninjas","Novel-based","Party Game","Pirates","Political","Post-Apocalyptic","Post-Napoleonic","Prehistoric","Print & Play","Prison Escape","Puzzle","Queer","RPG","Racing","Real-time","Religious","Renaissance","Resource Management","Roman Empire","Romance","Sci-Fi","Socialite","Solo / Solitaire","Space Exploration","Spies/Secret Agents","Sports","Strategy","Superhero","Tech","Territory Building","Theme Park","Trains","Transportation","Travel","Trivia","Vampire","Video Game Theme","War","Wargame","Werewolves","Western","Word Game","World War I","World War II","World War III","Zombies"];
 var categoryIdArr = ["WnxKtlGfdR", "85OKv8p5Ow", "hBqZ3Ar4RJ", "KUBCKBkGxV", "20iDvpbh7A", "tJxatX2ZbW", 	"nWDac9tQzt", "4mOtRRwSoj", "a8NM5cugJX", "MWoxgHrOJD", "eFaACC6y2c", "k0dglq5j6N", "QB4sEpx1Uu", "PinhJrhnxU", 	"fW5vusE96B", "eX8uuNlQkQ", "HKaYVNIxAJ", "ODWOjWAJj3", "w8XD66FUZ2", "329DxyFL9D", "vXxLT0FDTZ", "G5kfqnPBP6", 	"iTvYWFmD1c", "ge8pIhEUGE", "nfQONtMbDU", "Ef4oYLHNhI", "bCBXJy9qDw", "bKrxqD9mYc", "mavSOM8vjH", "UuxiExraPF", 	"We3MM46qBr", "ZEW7DPFAE6", "N0TkEGfEsF", "B3NRLMK4xD", "crxgUzJSEz", "gsekjrPJz0", "u5ZiYctU6T", "h8wfZG0j3I", 	"v4SfYtS2Lr", "yq6hVlbM2R", "7rV11PKqME", "ctumBZyj5l", "ZTneo8TaIO", "Wr8uXcoR9p", "upXZ8vNfNO", "zNxFBqBHXA", 	"3NDxCLUny4", "YrDuNj8lvr", "H9Ef643lYf", "NR0vgCx5R7", "cAIkk5aLdQ", "TYnxiuiI3X", "zqFmdU4Fp2", "R7PTH00PmO", "rrvd68LjOR", "XeYUw9159M", "nHZiDOXNla", "pIMmuVYnQp", "POlqwScVxD", "ZhlfIPxYsw", "c1AnMUJrTF", "AeWXMxbm91", "QAYkTHK1Dd", "AujCle9cUq", "FC6ElKI9tk", "L6NUwNdblq", "TJnR5obHsQ", "Sod2YBWMKi", "Kk70K0524Z", "MHkqIVxwtx", "IpcJzp0TVC", "vqZ5XzGWQD", "jZEDOpx07e", "mWb5kHTAg1", "rtslXnT90O", "dO9HVl2TW7", "X8J7RM6dxX", "9EIayX6n5a", "TKQncFVX74", "8Z7nWG2kOw", "5APB1MWk6X", "YyszHun1HP", "ov6sEmlkiC", "dAyk5NtNTV", "WVMOS3s2pb", "c6nnwyDdnl", "2Gu62aKdma", "tQGLgwdbYH", "PzWI2uaif0", "DRqeVkXWqX", "nuHYRFmMjU", "zyj9ZK3mHB", "KSBdPfxs6F", "E5rYwP0Ybr", "3B3QpKvXD3", "c6ei4hkUxm", "VzyslQJGrG", "0MdRqhkNpw", "Hc6vcim5DS", "hShsL2DktG","O0ogzwLUe8","usFW8szGAq","yHTeXNjln0","buDTYyPw4D","vCzpbYT7RU","JwHcKqxh33","CWYOF9xu7O","TR4CiP8Huj","YGHGDjahKY","CH0R8pZsem","djokexoK0U","ssZjU3HETz","jX8asGGR6o","uJgSEPT6zE","EHUBCITA3t","rHvAx4hH2f","wTLJSVEbm6","fl3TogdUzX","OlkGBmu4Va","FmGV9rVu1c"];
+// Validation
+var constraintsEmployee = {
+	login: {
+		presence: true,
+		length: {
+			minimum: 4,
+			message: "must be at least 4 characters"
+		},
+		exclusion: {
+			message: "'%{value}' is not allowed"
+		}
+	},
+	password: {
+		presence: true,
+		length: {
+			minimum: 8,
+			message: "must be at least 8 characters"
+		},
+		format: {
+			pattern: /^(?=.{8,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*$/,
+			message: "must contain a lowercase, uppercase, and number"
+		}
+	},
+	email: {
+		presence: true,
+		format: {
+			pattern: /.+?@.+\..+/
+		}
+	},
+	tier: {
+		presence: true,
+		length: {
+			minimum: 2,
+			message: "must be at least 2 characters"
+		}
+	}
+};
+var constraintsBoardGame = {
+	img_thumb: {
+		presence: true
+	},
+	img_thumb: {
+		presence: true
+	},
+	img_original: {
+		presence: true
+	},
+	url: {
+		presence: true
+	},
+	game_name: {
+		presence: true
+	},
+	rating: {
+		presence: true
+	},
+	min_time: {
+		presence: true,
+		numericality: {
+			greaterThan: 0
+		}
+	},
+	max_time: {
+		presence: true,
+		numericality: {
+			greaterThan: 0
+		}
+	},
+	min_players: {
+		presence: true,
+		numericality: {
+			greaterThan: 0
+		}
+	},
+	max_players: {
+		presence: true,
+		numericality: {
+			greaterThan: 0
+		}
+	},
+	short_description: {
+		presence: true
+	},
+	long_description: {
+		presence: true
+	},
+	category: {
+		presence: true
+	}
+};
+var constraintsBeer = {
+	beer_name: {
+		presence: true
+	},
+	brewery: {
+		presence: true
+	},
+	brewery_location: {
+		presence: true
+	},
+	short_description: {
+		presence: true
+	},
+	long_description: {
+		presence: true
+	},
+	abv: {
+		presence: true,
+		numericality: {
+			greaterThanOrEqualTo: 0,
+			lessThan: 100
+		}
+	}
+};
+// Logout button
 $(".logoutBtn").on("click", function(e) {
 	e.preventDefault();
 	$.ajax({
@@ -30,16 +145,30 @@ function searchGame(title) {
 	var boardGame = parseBoardGameData(response);
 	if (boardGame === false) return $("#api-board-game").find("input").val("Couldn't find the game");
 	for (let key in boardGame) {
+		let cleanText = cleanString(boardGame[key]);
 		if (key === "short_description" || key === "long_description"){
-			$(`textarea[name=${key}]`).val(boardGame[key])
+			$(`textarea[name=${key}]`).val(cleanText)
 			continue;
 		};
-		$(`input[name=${key}]`).val(boardGame[key]);
+		$(`input[name=${key}]`).val(cleanText);
 	};
 }).catch(err => {
 	throw err;
 });
 };
+
+// Cleans a string of any unwanted characters
+function cleanString(input) {
+	var string = String(input)
+	var result = "";
+	for (let i = 0; i < string.length; i++) {
+
+		if (string.charCodeAt(i) <= 127) {
+			result += string.charAt(i);
+		}
+	}
+	return result
+}
 
 // Parses the data from the board game api call
 function parseBoardGameData(data) {
@@ -117,30 +246,39 @@ $("#board-game-form").on("submit", function (e) {
 		};
 		boardGame[key] = $(`input[name=${key}]`).val();
 	};
-	let id = parseInt($("#choose-game option:selected").val())
-	// If id is not equal to 0 then
-	if (id > 0) {
-		// We run a put
-		$.ajax({
-			url: `/api/games/${id}`,
-			type: 'PUT',
-			data: boardGame
-		}).then((data) => {
-			console.log("Updated board game")
-			$("#board-game-form").children().val("")
-			init()
-		}).catch((err) => {
-			throw err
-		});
-	// If id is equal to 0 then we run a post
+	let validated = false;
+	if (boardGame.max_time > boardGame.min_time && boardGame.max_players > boardGame.min_players) {
+		validated = validation(boardGame, constraintsBoardGame);
+	}
+	if (validated) {
+		let id = parseInt($("#choose-game option:selected").val())
+		// If id is not equal to 0 then
+		if (id > 0) {
+			// We run a put
+			$.ajax({
+				url: `/api/games/${id}`,
+				type: 'PUT',
+				data: boardGame
+			}).then((data) => {
+				console.log("Updated board game")
+				$("#board-game-form").children().val("")
+				init()
+			}).catch((err) => {
+				throw err
+			});
+		// If id is equal to 0 then we run a post
+		} else {
+			$.post("/api/games", boardGame).then((data) => {
+				$("#board-game-form").children().val("")
+				console.log(`Added board game!`);
+				init()
+			}).catch((err) => {
+				throw err
+			});	
+		}
 	} else {
-		$.post("/api/games", boardGame).then((data) => {
-			$("#board-game-form").children().val("")
-			console.log(`Added board game!`);
-			init()
-		}).catch((err) => {
-			throw err
-		});	
+		$(`#max_playersError`).text("Make sure the max is greater than min.");
+		$(`#max_timeError`).text("Make sure the max is greater than min.");
 	}
 })
 
@@ -171,13 +309,18 @@ $("#add-beer").on("submit", function (e) {
 		long_description: $("#new-beer-long").val().trim(),
 		abv: parseFloat($("#new-abv").val().trim()).toFixed(1),
 	}
-	$("#add-beer").children().val("")
-	$.post("/api/beers", newBeer).then((data) => {
-		console.log("Added beer")
-		init();
-	}).catch(err => {
-		throw err
-	})
+	let validated = validation(newBeer, constraintsBeer);
+	console.log(validated)
+	if (validated) {
+		console.log("inside validated");
+		$("#add-beer").children().val("")
+		$.post("/api/beers", newBeer).then((data) => {
+			console.log("Added beer")
+			init();
+		}).catch(err => {
+			throw err
+		})
+	}
 })
 
 // Select beer functionality
@@ -204,26 +347,29 @@ $("#select-beer").on("submit", function (e) {
 $("#update-beer").on("submit", function (e) {
 	e.preventDefault()
 	const updatedBeer = {
-		beer_name: $("#chosen-beer").val().trim(),
+		beer_name: $("#choose-beer option:selected").val(),
 		brewery: $("#update-brewery").val().trim(),
 		brewery_location: $("#update-location").val().trim(),
 		abv: $("#update-abv").val().trim(),
 		short_description: $("#update-short").val().trim(),
 		long_description: $("#update-long").val().trim()
 	}
-	let id = $("#choose-beer option:selected").val();
-	$.ajax({
-		url: `/api/beers/${id}`,
-		type: 'PUT',
-		data: updatedBeer
-	}).then((data) => {
-		console.log(`Updated beer`)
-		$("#update-beer").children().val("") // Clears everything
-		$("#choose-beer option:selected").val(0);
-		init();
-	}).catch((err) => {
-		throw err
-	});
+	let validated = validation(updatedBeer, constraintsBeer);
+	if (validated) {
+		let id = $("#choose-beer option:selected").val();
+		$.ajax({
+			url: `/api/beers/${id}`,
+			type: 'PUT',
+			data: updatedBeer
+		}).then((data) => {
+			console.log(`Updated beer`)
+			$("#update-beer").children().val("") // Clears everything
+			$("#choose-beer option:selected").val(0);
+			init();
+		}).catch((err) => {
+			throw err
+		});
+	}
 });
 
 // Delete a beer
@@ -338,17 +484,20 @@ $("#add-employee").on("submit", function (e) {
 	let email = $("#email").val().trim();
 	let tier = $("#tier").val().trim();
 	let user = { login, password, email, tier };
-	$.ajax({
-		url: "/api/permissions",
-		data: user,
-		method: "POST"
-	}).then(response => {
-		console.log(`Added user`)
-		$("#add-employee").children().val("");
-		init();
-	}).catch((err) => {
-		throw err;
-	})
+	let validated = validation(user, constraintsEmployee);
+	if (validated) {
+		$.ajax({
+			url: "/api/permissions",
+			data: user,
+			method: "POST"
+		}).then(response => {
+			console.log(`Added user`)
+			$("#add-employee").children().val("");
+			init();
+		}).catch((err) => {
+			throw err;
+		})
+	} 
 })
 // Remove functionality
 $("#del-login").on("submit", function(e) {
@@ -409,5 +558,27 @@ function populateDeleteSelector(row, data) {
 			selectionName = item[row];
 		};
 		$(`#del-${row}-select`).append($(`<option value="${selectionId}">${selectionName}</option>`));
+	}
+}
+
+// data = form data
+// constraints = form constraints
+function validation(data, constraints) {
+	let isValid = true;
+	// all errors on the page
+	$(".error").text("");
+	const errors = validate(data, constraints);
+	if (errors) isValid = false;
+	// continue normal
+	if (isValid) {
+		return true
+	} else {
+		for (let field in errors) {
+			const fieldName = field;
+			// console.log(fieldName);
+			$(`#${fieldName}Error`).text(errors[field].join(", "));
+			$(`#${fieldName}UError`).text(errors[field].join(", "));
+		}
+		return false
 	}
 }

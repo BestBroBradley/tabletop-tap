@@ -37,6 +37,10 @@ head
       padding: 10px;
       max-width: 100px;
     }
+    .validateField {
+      color: red;
+      font-weight: bold;
+    }
 
 button(class="logoutBtn") Logout
 h1 Admin Page
@@ -45,36 +49,47 @@ h1 Admin Page
     form#add-beer
       h2 Add a beer:
       h3 Beer name:
+      p(id="beer_nameError" class="error" style="color: red; font-weight: bold") 
       input#new-beer-name
       h3 Brewery:
+      p(id="breweryError" class="error" style="color: red; font-weight: bold") 
       input#new-brewery-name
       h3 Brewery location:
+      p(id="brewery_locationError" class="error" style="color: red; font-weight: bold") 
       input#new-brewery-location
       h3 ABV
+      p(id="abvError" class="error" style="color: red; font-weight: bold") 
       input#new-abv
       h3 Short description of beer:
+      p(id="short_descriptionError" class="error" style="color: red; font-weight: bold") 
       textarea#new-beer-short
-      h3 Longer description of beer (optional):
+      h3 Longer description of beer:
+      p(id="long_descriptionError" class="error" style="color: red; font-weight: bold") 
       textarea#new-beer-long
       button Submit
   .container
     h2 Update a beer:
     form#select-beer
       h3 Beer name:
+      p(id="beer_nameUError" class="error" style="color: red; font-weight: bold") 
       select#choose-beer
         option(value='0') None Selected
       button Select
     form#update-beer
       h3 Brewery:
-      p#chosen-beer
+      p(id="breweryUError" class="error" style="color: red; font-weight: bold") 
       input#update-brewery
       h3 Brewery location:
+      p(id="brewery_locationUError" class="error" style="color: red; font-weight: bold") 
       input#update-location
       h3 ABV
+      p(id="abvUError" class="error" style="color: red; font-weight: bold") 
       input#update-abv
       h3 Short description of beer:
+      p(id="short_descriptionUError" class="error" style="color: red; font-weight: bold") 
       textarea#update-short
-      h3 Longer description of beer (optional):
+      h3 Longer description of beer:
+      p(id="long_descriptionUError" class="error" style="color: red; font-weight: bold") 
       textarea#update-long
       button Submit
 .container
@@ -99,28 +114,40 @@ h1 Admin Page
   form#board-game-form(method='post' action='/api/games')
     h2 Add a Game:
     h3 Board Game Name:
+    p(id="game_nameError" class="error" style="color: red; font-weight: bold") 
     input(name='game_name')
     h3 Rating:
+    p(id="ratingError" class="error" style="color: red; font-weight: bold") 
     input(name='rating')
     h3 Category:
+    p(id="categoryError" class="error" style="color: red; font-weight: bold") 
     input(name='category')
     h3 Minimum Time:
+    p(id="min_timeError" class="error" style="color: red; font-weight: bold") 
     input(name='min_time')
     h3 Maximum Time
+    p(id="max_timeError" class="error" style="color: red; font-weight: bold") 
     input(name='max_time')
     h3 Minimum Players
+    p(id="min_playersError" class="error" style="color: red; font-weight: bold") 
     input(name='min_players')
     h3 Maximum Players:
+    p(id="max_playersError" class="error" style="color: red; font-weight: bold") 
     input(name='max_players')
     h3 Shorter Description of the Game:
+    p(id="short_descriptionError" class="error" style="color: red; font-weight: bold") 
     textarea(name='short_description')
-    h3 Longer Description of the Game (optional):
+    h3 Longer Description of the Game:
+    p(id="long_descriptionError" class="error" style="color: red; font-weight: bold") 
     textarea(name='long_description')
     h3 Image Url (Thumbnail)
+    p(id="img_thumbError" class="error" style="color: red; font-weight: bold") 
     input(name='img_thumb')
     h3 Image Url (Large)
+    p(id="img_originalError" class="error" style="color: red; font-weight: bold") 
     input(name='img_original')
     h3 Url To Purchase Game
+    p(id="urlError" class="error" style="color: red; font-weight: bold") 
     input(name='url')
     button Submit
 .container
@@ -366,19 +393,27 @@ h1 Admin Page
       br
       hr
       button Submit
-if tier === 'TOPADMIN'
+if true
+  // tier === 'TOPADMIN'
   .container
     form#add-employee
       h2 Add employee to permissions:
-      p Username:
-      input#login
-      //- Who's password is supposed to be entered in here? The new user or the admin?
-      p Password:
-      input#password
-      p Email:
-      input#email
-      p Tier:
-      input#tier
+      // Username
+      p(id="loginError" class="error" style="color: red; font-weight: bold") 
+      label(for="login")     Username:  
+      input(type="text" id="login" placeholder="Must be a unique username")
+      // Password
+      p(id="passwordError" class="error" style="color: red; font-weight: bold") 
+      label(for="password")     Password:  
+      input(type="text" id="password" size="50" placeholder="Minimum 8 characters with at least a lower, upper, and number")
+      // Email
+      p(id="emailError" class="error" style="color: red; font-weight: bold") 
+      label(for="email")     Email:  
+      input(type="text" id="email" placeholder="example@email.com")
+      // Tier
+      p(id="tierError" class="error" style="color: red; font-weight: bold") 
+      label(for="tier")     Tier:  
+      input(type="text" id="tier" placeholder="TOPADMIN or Employee")
       br
       hr
       button Submit
@@ -392,3 +427,4 @@ if tier === 'TOPADMIN'
       hr
       button Submit
 script(type='text/javascript' src='/js/admin.js')
+script(src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.7.1/validate.js")
