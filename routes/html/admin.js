@@ -15,9 +15,8 @@ router.get('/signup', function (req, res) {
   })
 })
 
-router.get('/', function (req, res) { //,isAuthenticated
-  res.render("admin", { pageTitle: "Admin"  || "", youAreUsingPug: true })
-  // ,tier:req.user.tier
+router.get('/', isAuthenticated, function (req, res) { //
+  res.render("admin", { pageTitle: "Admin", tier:req.user.tier || "", youAreUsingPug: true })
 })
 
 router.get('/login', function (req, res) {
