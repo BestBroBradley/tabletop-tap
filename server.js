@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8080;
 const pug = require("pug");
 const db = require("./models");
 const path = require("path");
-var serveStatic = require('serve-static')
+var compression = require("compression")
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "client/Public")));
-
+app.use(compression())
 app.use(routes)
 
 app.set("view engine", "pug");

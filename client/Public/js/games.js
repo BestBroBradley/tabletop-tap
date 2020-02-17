@@ -1,4 +1,3 @@
-// .ready method runs the JavaScript as soon as the page's DOM becomes safe to manipulate
 $(document).ready(function() {
   $(".view-more, .delete").on("click", function(e) {
     console.log('clicked')
