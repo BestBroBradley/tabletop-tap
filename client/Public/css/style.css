@@ -59,6 +59,11 @@ p.subtitle {
     margin: 1rem
   }
   
+  #fullBeerList {
+    width: 97%;
+    margin: auto
+  }
+
   .column.is-four-fifths-mobile:not(.ff7Box) {
     width: 100%;
   }
